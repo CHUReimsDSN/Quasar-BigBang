@@ -1,4 +1,5 @@
 export type TSurfaceEntry = {
+  reference: string;
   s0: string;
   s50: string;
   s100: string;
@@ -28,6 +29,7 @@ export type TSurfaceLabel =
 
 const entries: Record<TSurfaceLabel, TSurfaceEntry> = Object.freeze({
   Slate: {
+    reference: "#46748b",
     s0: "#ffffff",
     s50: "#f8fafc",
     s100: "#f1f5f9",
@@ -42,6 +44,7 @@ const entries: Record<TSurfaceLabel, TSurfaceEntry> = Object.freeze({
     s950: "#020617",
   },
   Gray: {
+    reference: "#6b7280",
     s0: "#ffffff",
     s50: "#f9fafb",
     s100: "#f3f4f6",
@@ -56,20 +59,22 @@ const entries: Record<TSurfaceLabel, TSurfaceEntry> = Object.freeze({
     s950: "#030712",
   },
   Zinc: {
+    reference: "#71717a",
     s0: "#ffffff",
-    s50: "light-dark(var(--p-slate-50), var(--p-zinc-50))",
-    s100: "light-dark(var(--p-slate-100), var(--p-zinc-100))",
-    s200: "light-dark(var(--p-slate-200), var(--p-zinc-200))",
-    s300: "light-dark(var(--p-slate-300), var(--p-zinc-300))",
-    s400: "light-dark(var(--p-slate-400), var(--p-zinc-400))",
-    s500: "light-dark(var(--p-slate-500), var(--p-zinc-500))",
-    s600: "light-dark(var(--p-slate-600), var(--p-zinc-600))",
-    s700: "light-dark(var(--p-slate-700), var(--p-zinc-700))",
-    s800: "light-dark(var(--p-slate-800), var(--p-zinc-800))",
-    s900: "light-dark(var(--p-slate-900), var(--p-zinc-900))",
-    s950: "light-dark(var(--p-slate-950), var(--p-zinc-950))",
+    s50: "#fafafa",
+    s100: "#f4f4f5",
+    s200: "#e4e4e7",
+    s300: "#d4d4d8",
+    s400: "#a1a1aa",
+    s500: "#71717a",
+    s600: "#52525b",
+    s700: "#3f3f46",
+    s800: "#27272a",
+    s900: "#18181b",
+    s950: "#09090b",
   },
   Neutral: {
+    reference: "#737373",
     s0: "#ffffff",
     s50: "#fafafa",
     s100: "#f5f5f5",
@@ -84,6 +89,7 @@ const entries: Record<TSurfaceLabel, TSurfaceEntry> = Object.freeze({
     s950: "#0a0a0a",
   },
   Stone: {
+    reference: "#78716c",
     s0: "#ffffff",
     s50: "#fafaf9",
     s100: "#f5f5f4",
@@ -98,6 +104,7 @@ const entries: Record<TSurfaceLabel, TSurfaceEntry> = Object.freeze({
     s950: "#0c0a09",
   },
   Soho: {
+    reference: "#7f8084",
     s0: "#ffffff",
     s50: "#ececec",
     s100: "#dedfdf",
@@ -112,6 +119,7 @@ const entries: Record<TSurfaceLabel, TSurfaceEntry> = Object.freeze({
     s950: "#16161d",
   },
   Viva: {
+    reference: "#666769",
     s0: "#ffffff",
     s50: "#f3f3f3",
     s100: "#e7e7e8",
@@ -126,6 +134,7 @@ const entries: Record<TSurfaceLabel, TSurfaceEntry> = Object.freeze({
     s950: "#0e1315",
   },
   Ocean: {
+    reference: "#828787",
     s0: "#ffffff",
     s50: "#fbfcfc",
     s100: "#F7F9F8",
@@ -140,6 +149,7 @@ const entries: Record<TSurfaceLabel, TSurfaceEntry> = Object.freeze({
     s950: "#0c1920",
   },
   Taupe: {
+    reference: "#7d7468",
     s0: "#ffffff",
     s50: "#faf8f6",
     s100: "#f2eeea",
@@ -154,6 +164,7 @@ const entries: Record<TSurfaceLabel, TSurfaceEntry> = Object.freeze({
     s950: "#110f0c",
   },
   Mauve: {
+    reference: "#7e7082",
     s0: "#ffffff",
     s50: "#faf8fa",
     s100: "#f4f0f5",
@@ -168,6 +179,7 @@ const entries: Record<TSurfaceLabel, TSurfaceEntry> = Object.freeze({
     s950: "#100e11",
   },
   Mist: {
+    reference: "#6b7a94",
     s0: "#ffffff",
     s50: "#f8fafe",
     s100: "#eef2fa",
@@ -182,6 +194,7 @@ const entries: Record<TSurfaceLabel, TSurfaceEntry> = Object.freeze({
     s950: "#0c1018",
   },
   Olive: {
+    reference: "#767e6c",
     s0: "#ffffff",
     s50: "#fafbf8",
     s100: "#f2f4ee",

@@ -7,8 +7,16 @@ export default defineConfig((/* ctx */) => ({
   css: ["app.scss"],
   extras: [
     "roboto-font", // optional, you are not bound to it
-    "material-icons" // optional, you are not bound to it
+    "material-icons", // optional, you are not bound to it
+    'mdi-v7'
   ],
+
+  framework: {
+    config: {
+      dark: 'auto'
+    },
+    plugins: ['Notify']
+  },
 
   build: {
     filenameBasedRouting: true,

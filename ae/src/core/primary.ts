@@ -1,4 +1,5 @@
 export type TPrimaryEntry = {
+  reference: string;
   p50: string;
   p100: string;
   p200: string;
@@ -32,19 +33,21 @@ export type TPrimaryLabel =
 
 const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
   Contrast: {
-    p50: "var(--p-surface-50)",
-    p100: "var(--p-surface-100)",
-    p200: "var(--p-surface-200)",
-    p300: "var(--p-surface-300)",
-    p400: "var(--p-surface-400)",
-    p500: "var(--p-surface-500)",
-    p600: "var(--p-surface-600)",
-    p700: "var(--p-surface-700)",
-    p800: "var(--p-surface-800)",
-    p900: "var(--p-surface-900)",
-    p950: "var(--p-surface-950)",
+    reference: "light-dark(var(--surface-950), var(--surface-50))",
+    p50: "light-dark(var(--surface-950), var(--surface-50))",
+    p100: "light-dark(var(--surface-900), var(--surface-100))",
+    p200: "light-dark(var(--surface-800), var(--surface-200))",
+    p300: "light-dark(var(--surface-700), var(--surface-300))",
+    p400: "light-dark(var(--surface-800), var(--surface-50))",
+    p500: "light-dark(var(--surface-950), var(--surface-200))",
+    p600: "light-dark(var(--surface-400), var(--surface-600))",
+    p700: "light-dark(var(--surface-300), var(--surface-700))",
+    p800: "light-dark(var(--surface-200), var(--surface-800))",
+    p900: "light-dark(var(--surface-100), var(--surface-900))",
+    p950: "light-dark(var(--surface-50), var(--surface-950))",
   },
   Emerald: {
+    reference: "#10b981",
     p50: "#ecfdf5",
     p100: "#d1fae5",
     p200: "#a7f3d0",
@@ -58,6 +61,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#022c22",
   },
   Green: {
+    reference: "#22c55e",
     p50: "#f0fdf4",
     p100: "#dcfce7",
     p200: "#bbf7d0",
@@ -71,6 +75,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#052e16",
   },
   Lime: {
+    reference: "#84cc16",
     p50: "#f7fee7",
     p100: "#ecfccb",
     p200: "#d9f99d",
@@ -84,6 +89,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#1a2e05",
   },
   Orange: {
+    reference: "#f97316",
     p50: "#fff7ed",
     p100: "#ffedd5",
     p200: "#fed7aa",
@@ -97,6 +103,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#431407",
   },
   Amber: {
+    reference: "#f59e0b",
     p50: "#fffbeb",
     p100: "#fef3c7",
     p200: "#fde68a",
@@ -110,6 +117,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#451a03",
   },
   Yellow: {
+    reference: "#eab308",
     p50: "#fefce8",
     p100: "#fef9c3",
     p200: "#fef08a",
@@ -123,6 +131,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#422006",
   },
   Teal: {
+    reference: "#14b8a6",
     p50: "#f0fdfa",
     p100: "#ccfbf1",
     p200: "#99f6e4",
@@ -136,6 +145,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#042f2e",
   },
   Cyan: {
+    reference: "#06b6d4",
     p50: "#ecfeff",
     p100: "#cffafe",
     p200: "#a5f3fc",
@@ -149,6 +159,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#083344",
   },
   Sky: {
+    reference: "#0ea5e9",
     p50: "#f0f9ff",
     p100: "#e0f2fe",
     p200: "#bae6fd",
@@ -162,6 +173,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#082f49",
   },
   Blue: {
+    reference: "#3b82f6",
     p50: "#eff6ff",
     p100: "#dbeafe",
     p200: "#bfdbfe",
@@ -175,6 +187,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#172554",
   },
   Indigo: {
+    reference: "#6366f1",
     p50: "#eef2ff",
     p100: "#e0e7ff",
     p200: "#c7d2fe",
@@ -188,6 +201,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#1e1b4b",
   },
   Violet: {
+    reference: "#8b5cf6",
     p50: "#f5f3ff",
     p100: "#ede9fe",
     p200: "#ddd6fe",
@@ -201,6 +215,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#2e1065",
   },
   Purple: {
+    reference: "#a855f7",
     p50: "#faf5ff",
     p100: "#f3e8ff",
     p200: "#e9d5ff",
@@ -214,6 +229,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#3b0764",
   },
   Fushia: {
+    reference: "#d946ef",
     p50: "#fdf4ff",
     p100: "#fae8ff",
     p200: "#f5d0fe",
@@ -227,6 +243,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#4a044e",
   },
   Pink: {
+    reference: "#ec4899",
     p50: "#fdf2f8",
     p100: "#fce7f3",
     p200: "#fbcfe8",
@@ -240,6 +257,7 @@ const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
     p950: "#500724",
   },
   Rose: {
+    reference: "#f43f5e",
     p50: "#fff1f2",
     p100: "#ffe4e6",
     p200: "#fecdd3",

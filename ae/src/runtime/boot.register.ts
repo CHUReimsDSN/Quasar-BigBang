@@ -1,6 +1,8 @@
 import { defineBoot } from "#q-app";
-import MyComponent from "./MyComponent.vue";
+import QBBThemePreview from "../components/QBBThemePreview.vue";
+import QBBTime from "../components/QBBTime.vue";
 
 export default defineBoot(async ({ app }) => {
-  app.component("my-component", MyComponent);
+  app.component("qbb-time", QBBTime);
+  app.component("qbb-theme-preview", QBBThemePreview);
 });
