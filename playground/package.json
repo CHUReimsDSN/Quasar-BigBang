@@ -2,7 +2,7 @@
   "name": "playground",
   "version": "0.0.1",
   "private": true,
-  "description": "A Quasar App Extension Playground",
+  "description": "Quasar Big Bang Playground",
   "author": "JulesDebeaumont <deb.jules@outlook.fr>",
   "type": "module",
   "scripts": {
@@ -23,5 +23,5 @@
     "@types/node": "^22.19.11",
     "quasar-app-extension-big-bang": "workspace:*"
   },
-  "productName": "Quasar App Extension Playground"
+  "productName": "Quasar BigBang Playground"
 }

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import NavigationItem from "./NavigationItem.vue";
-import { Dark } from "quasar";
 
 // types
 export type TRoute = {
@@ -106,7 +105,7 @@ const isRouteValid = (route: TRoute, regex: RegExp) => {
     @mouseenter="miniState = false"
     @mouseleave="miniState = true"
     :class="{ 'hide-scrollbar': miniState }"
-    :width="270"
+    :width="250"
   >
     <q-list class="q-pa-md">
       <q-item>
@@ -132,7 +131,6 @@ const isRouteValid = (route: TRoute, regex: RegExp) => {
         <q-input
           v-if="!miniState || overHeader || isWriting"
           v-model="searchedRoute"
-          outlined
           clearable
           placeholder="Search"
           @blur="() => (isWriting = false)"

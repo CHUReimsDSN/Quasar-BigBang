@@ -2,11 +2,11 @@ import { primaries, type TPrimaryLabel } from "./primary";
 import { surfaces, type TSurfaceLabel } from "./surface";
 import { Saver, TSaveStrategy } from "./saver";
 
-export class QBigBang {
-  private static _instance: QBigBang = new QBigBang();
+export class BigBang {
+  private static _instance: BigBang = new BigBang();
   private _primary: TPrimaryLabel = 'Emerald'
   private _surface: TSurfaceLabel = 'Slate'
-  private _saveStrategy: TSaveStrategy = 'local-storage'
+  private _saveStrategy: TSaveStrategy = 'none'
 
   static setPrimary(primaryLabel: TPrimaryLabel) {
     const primary = primaries.get(primaryLabel);
@@ -20,6 +20,7 @@ export class QBigBang {
         entry[1],
       );
     }
+    this.trySaveTheme()
   }
 
   static getPrimary() {
@@ -38,6 +39,7 @@ export class QBigBang {
         entry[1],
       );
     }
+    this.trySaveTheme()
   }
 
   static getSurface() {
@@ -57,7 +59,7 @@ export class QBigBang {
 
   static tryLoadTheme() {
     if (this._instance._saveStrategy === 'none') {
-      return
+      this._instance._saveStrategy
     }
     const themeData = Saver.load()
     this.setPrimary(themeData[0])
@@ -67,5 +69,7 @@ export class QBigBang {
   static getSaveMode() {
     return this._instance._saveStrategy
   }
+
+  private constructor() {}
 
 }

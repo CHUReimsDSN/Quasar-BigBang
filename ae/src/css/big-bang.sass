@@ -11,6 +11,16 @@ body
   color: var(--text-color) !important
   background: var(--page-background) !important
 
+::-webkit-scrollbar
+  width: 8px
+::-webkit-scrollbar-track
+  background: transparent
+::-webkit-scrollbar-thumb
+  background: var(--field-border-color) !important
+  border-radius: 3px
+::-webkit-scrollbar-thumb:hover
+  background: var(--field-border-color-hover) !important
+
 .q-drawer
   background: var(--drawer-background) !important
 
@@ -65,9 +75,9 @@ body
 
 body.desktop
   .q-focus-helper
-    transition: background-color .1s cubic-bezier(.25,.8,.5,1), opacity 0.1s cubic-bezier(.25,.8,.5,1)
+    transition: background-color .2s cubic-bezier(.25,.8,.5,1), opacity 0.2s cubic-bezier(.25,.8,.5,1)
     &:before, &:after
-      transition: background-color .1s cubic-bezier(.25,.8,.5,1), opacity .1s cubic-bezier(.25,.8,.5,1)
+      transition: background-color .2s cubic-bezier(.25,.8,.5,1), opacity .2s cubic-bezier(.25,.8,.5,1)
 
 .q-field
   font-size: $input-font-size
@@ -411,7 +421,7 @@ body.desktop
 .q-transition--field-message
   &-enter-active,
   &-leave-active
-    transition: transform .6s cubic-bezier(.86,0,.07,1), opacity .6s cubic-bezier(.86,0,.07,1)
+    transition: transform .2s cubic-bezier(.86,0,.07,1), opacity .2s cubic-bezier(.86,0,.07,1)
   &-enter-from, &-leave-to
     opacity: 0
     transform: translateY(-10px)
@@ -431,18 +441,9 @@ body.desktop
   outline: 0
   z-index: $z-menu
   &--square
-    border-radius: $generic-border-radius 
-  scrollbar-width: thin
-  scrollbar-color: #888 transparent
+    border-radius: $generic-border-radius
   &::-webkit-scrollbar
-    width: 6px
-  &::-webkit-scrollbar-track
-    background: transparent
-  &::-webkit-scrollbar-thumb
-    background: #888
-    border-radius: 3px
-  &::-webkit-scrollbar-thumb:hover
-    background: #666
+    width: 4px
 
 .q-btn
   text-transform: none
@@ -450,6 +451,7 @@ body.desktop
   padding: $q-btn-padding
   margin-right: 0px
   font-size: $q-btn-font-size
+  transition: background .2s
   &.bg-primary, &.bg-positive, &.bg-negative, &.bg-info, &.bg-warning
     color: var(--btn-text-color) !important
   &--rectangle
@@ -471,7 +473,7 @@ body.desktop
   margin-left: 4px
 
 .q-card
-  padding: 1.125rem
+  padding: 0.8rem
   display: flex
   box-shadow: none
   background: var(--card-background)
@@ -524,13 +526,6 @@ body.desktop
     letter-spacing: map.get($value, "letter-spacing")
     margin: map.get($value, "margin")
 
-$notification-colors: (
-  positive: $positive,
-  warning: $warning,
-  negative: $negative,
-  info: $info
-)
-
 .q-notification
   width: 310px
   max-width: 100%
@@ -542,29 +537,33 @@ $notification-colors: (
   opacity: 1
   font-size: 13px
   padding-top: 4px
-  color: #000
+
+$notification-colors: (
+  positive: var(--positive-color),
+  warning: var(--warning-color),
+  negative: var(--negative-color),
+  info: var(--info-color)
+)
 
 @each $name, $color in $notification-colors
   .q-notification.bg-#{$name}
-    background: color.change($color, $saturation: 90%, $lightness: 96%) !important
+    background: hsl(from $color h 85% 95%) !important
     border: 1px solid
-    border-color: color.change($color, $alpha: 0.4) !important
+    border-color: hsl(from $color h 100% 80%) !important
     .q-notification__icon
       color: $color
     .q-notification__message
       color: $color
+    .q-notification__caption
+     color: var(--text-color)
 
 body.body--dark
   .q-notification
     backdrop-filter: blur(12px)
-
-  .q-notification__caption
-     color: #fff
-
   @each $name, $color in $notification-colors
     .q-notification.bg-#{$name}
-      background: color.change($color, $lightness: 30%, $alpha: 0.4) !important
-      border-color: color.change($color, $lightness: 20%) !important
+      background: hsl(from $color h s 30% / 0.3) !important
+      border-color: hsl(from $color h s 23%) !important
       .q-notification__icon
         color: $color !important
       .q-notification__message
@@ -599,7 +598,7 @@ body.body--dark
   padding: 0 14px
   padding-top: 8px
   text-transform: none
-  border-bottom: 1px solid $grey-6
+  border-bottom: 1px solid var(--field-border-color-hover)
   &--full
     min-height: 1px
   .q-focus-helper
@@ -607,13 +606,9 @@ body.body--dark
   &--active
     color: $primary
   &--inactive
-    color: $grey-7
+    color: var(--inactive-color)
     &:hover
-      color: $grey-10
-    body.body--dark &
-      color: $grey-4
-      &:hover
-        color: $white
+      color: var(--text-color)
   &__indicator
     height: 1px
   &__label
@@ -646,14 +641,13 @@ body.body--dark
         &:hover
           border: 1px solid currentColor !important
   &__bg
+    background: var(--field-background)
     border-radius: 4px   
     border: 1px solid var(--field-border-color)
     &:hover
       border: 1px solid var(--field-border-color-hover)
     .q-checkbox__svg
       scale: 0.8
-  //&__svg
-  //  color: var(--secondary-text-color)
 
 .q-date
   box-shadow: none
@@ -733,7 +727,43 @@ body.body--dark
 .bg-primary
   background: var(--primary-color) !important
   color: var(--btn-text-color) !important
+  &.q-hoverable
+    &:hover
+      background: var(--primary-hover-color) !important
+
+.text-primary
+  color: var(--primary-text-color) !important;
 
 .bg-secondary
   background: var(--secondary-color) !important
   color: var(--secondary-text-color) !important
+  &.q-hoverable
+    &:hover
+      background: var(--secondary-hover-color) !important
+
+.text-secondary
+  color: var(--secondary-text-color) !important
+
+.bg-positive
+  background: var(--positive-color) !important
+  &.q-hoverable
+    &:hover
+      background: var(--positive-hover-color) !important
+
+.bg-negative
+  background: var(--negative-color) !important
+  &.q-hoverable
+    &:hover
+      background: var(--negative-hover-color) !important
+
+.bg-warning
+  background: var(--warning-color) !important
+  &.q-hoverable
+    &:hover
+      background: var(--warning-hover-color) !important
+
+.bg-info
+  background: var(--info-color) !important
+  &.q-hoverable
+    &:hover
+      background: var(--info-hover-color) !important

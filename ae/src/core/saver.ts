@@ -1,15 +1,18 @@
 import type { TPrimaryLabel } from "./primary";
 import type { TSurfaceLabel } from "./surface";
 
-export type TSaveStrategy = "none" | "local-storage" | "cookie";
+export type TSaveStrategy = "none" | "local-storage";
 
 export class Saver {
+  private static keyName = 'quasar-big-bang'
+  private static serializerSeparator = '|'
+
   static save(primaryLabel: TPrimaryLabel, surfaceLabel: TSurfaceLabel) {
-    // TODO
+    localStorage.setItem(this.keyName, `${primaryLabel}${this.serializerSeparator}${surfaceLabel}`)
   }
 
   static load(): [TPrimaryLabel, TSurfaceLabel] {
-    return ["Emerald", 'Slate'] // TODO
+    return (localStorage.getItem(this.keyName)?.split(this.serializerSeparator) as [TPrimaryLabel, TSurfaceLabel]) ?? ["Emerald", 'Slate']
   }
 
   private constructor() {}

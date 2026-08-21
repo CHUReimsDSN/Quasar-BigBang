@@ -33,14 +33,14 @@ export type TPrimaryLabel =
 
 const entries: Record<TPrimaryLabel, TPrimaryEntry> = Object.freeze({
   Contrast: {
-    reference: "light-dark(var(--surface-950), var(--surface-50))",
+    reference: "light-dark(var(--surface-800), var(--surface-200))",
     p50: "light-dark(var(--surface-950), var(--surface-50))",
     p100: "light-dark(var(--surface-900), var(--surface-100))",
     p200: "light-dark(var(--surface-800), var(--surface-200))",
-    p300: "light-dark(var(--surface-700), var(--surface-300))",
+    p300: "light-dark(var(--surface-700), var(--surface-200))",
     p400: "light-dark(var(--surface-800), var(--surface-50))",
-    p500: "light-dark(var(--surface-950), var(--surface-200))",
-    p600: "light-dark(var(--surface-400), var(--surface-600))",
+    p500: "light-dark(var(--surface-800), var(--surface-200))",
+    p600: "light-dark(var(--surface-800), var(--surface-600))",
     p700: "light-dark(var(--surface-300), var(--surface-700))",
     p800: "light-dark(var(--surface-200), var(--surface-800))",
     p900: "light-dark(var(--surface-100), var(--surface-900))",

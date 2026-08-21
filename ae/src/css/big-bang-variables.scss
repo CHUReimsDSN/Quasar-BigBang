@@ -3,44 +3,40 @@
 :root {
   color-scheme: light;
 
-  // default primary : emerald
-  --primary-50: #ecfdf5;
-  --primary-100: #d1fae5;
-  --primary-200: #a7f3d0;
-  --primary-300: #6ee7b7;
-  --primary-400: #34d399;
-  --primary-500: #10b981;
-  --primary-600: #059669;
-  --primary-700: #047857;
-  --primary-800: #065f46;
-  --primary-900: #064e3b;
-  --primary-950: #022c22;
+  --primary-50: #fff;
+  --primary-100: #fff;
+  --primary-200: #fff;
+  --primary-300: #fff;
+  --primary-400: #fff;
+  --primary-500: #fff;
+  --primary-600: #fff;
+  --primary-700: #fff;
+  --primary-800: #fff;
+  --primary-900: #fff;
+  --primary-950: #fff;
 
-  // default surface : slate
-  --surface-0: #ffffff;
-  --surface-50: #f8fafc;
-  --surface-100: #f1f5f9;
-  --surface-200: #e2e8f0;
-  --surface-300: #cbd5e1;
-  --surface-400: #94a3b8;
-  --surface-500: #64748b;
-  --surface-600: #475569;
-  --surface-700: #334155;
-  --surface-800: #1e293b;
-  --surface-900: #0f172a;
-  --surface-950: #020617;
+  --surface-0: #fff;
+  --surface-50: #fff;
+  --surface-100: #fff;
+  --surface-200: #fff;
+  --surface-300: #fff;
+  --surface-400: #fff;
+  --surface-500: #fff;
+  --surface-600: #fff;
+  --surface-700: #fff;
+  --surface-800: #fff;
+  --surface-900: #fff;
+  --surface-950: #fff;
 
   --primary-color: var(--primary-500);
   --primary-text-color: var(--primary-600);
-  --primary-active-color: var(--primary-700);
   --primary-hover-color: var(--primary-600);
 
   --secondary-color: var(--surface-200);
   --secondary-text-color: var(--surface-600);
   --secondary-hover-color: var(--surface-200);
-  
-  --positive-color: var()
-  
+  --secondary-hover-text-color: var(--surface-700);
+    
   --text-color: var(--surface-700);
   --card-background: var(--surface-0);
   --card-border-color: var(--surface-300);
@@ -49,6 +45,8 @@
   --page-background: var(--surface-50);
   --drawer-background: var(--surface-100);
   --header-background: var(--surface-100);
+
+  --inactive-color: var(--surface-500);
 
   --field-background: var(--surface-0);
   --field-border-color: var(--surface-300);
@@ -59,9 +57,28 @@
   --menu-item-color-hover: var(--surface-950);
   --menu-item-active-color: var(--surface-0);
 
-  //--scrollbar-color: 
-
   --btn-text-color: var(--surface-0);
+
+  --positive-color: light-dark(#42c360, #5fdb82);
+  --positive-hover-color: light-dark(hsl(from var(--positive-color) h s 45%), hsl(from var(--positive-color) h s 75%));
+
+  --negative-color: light-dark(#fa4c40, #ec554d);
+  --negative-hover-color: light-dark(hsl(from var(--negative-color) h s 47%), hsl(from var(--negative-color) h 100% 75%));
+
+  --warning-color: light-dark(#fa8328, #f38f32);
+  --warning-hover-color: light-dark(hsl(from var(--warning-color) h s 47%), hsl(from var(--warning-color) h s 75%));
+
+  --info-color: light-dark(#24a4e8, #44bbf7);
+  --info-hover-color: light-dark(hsl(from var(--info-color) h s 45%), hsl(from var(--info-color) h s 75%));
+
+  --q-primary: var(--primary-color);
+  --q-secondary: var(--secondary-color);
+  --q-positive: var(--positive-color);
+  --q-negative: var(--negative-color);
+  --q-warning: var(--warning-color);
+  --q-info: var(--info-color);
+  --q-dark: var(--text-color);
+  --q-dark-page: var(--page-background);
 }
 
 body.body--dark {
@@ -69,12 +86,12 @@ body.body--dark {
 
   --primary-color: var(--primary-400);
   --primary-text-color: var(--primary-400);
-  --primary-active-color: var(--primary-300);
-  --primary-hover-color: var(--primary-200);
+  --primary-hover-color: var(--primary-300);
 
   --secondary-color: var(--surface-800);
   --secondary-text-color: var(--surface-300);
-  --secondary-hover-color: var(--surface-700);
+  --secondary-hover-color: var(--surface-800);
+  --secondary-hover-text-color: var(--surface-200);
 
   --text-color: var(--surface-0);
   --card-background: var(--surface-900);
@@ -84,6 +101,8 @@ body.body--dark {
   --page-background: var(--surface-950);
   --drawer-background: var(--surface-900);
   --header-background: var(--surface-950);
+
+  --inactive-color: var(--surface-300);
 
   --field-background: var(--surface-950);
   --field-border-color: var(--surface-600);
@@ -95,15 +114,24 @@ body.body--dark {
   --menu-item-active-color: var(--surface-700);
 
   --btn-text-color: var(--surface-900);
+
+  --q-primary: var(--primary-color);
+  --q-secondary: var(--secondary-color);
+  --q-positive: var(--positive-color);
+  --q-negative: var(--negative-color);
+  --q-warning: var(--warning-color);
+  --q-info: var(--info-color);
+  --q-dark: var(--text-color);
+  --q-dark-page: var(--page-background);
 }
 
 $primary   : var(--primary-color);
 $secondary : var(--secondary-color);
 
-$positive  : #36b063;
-$negative  : #d24b4b;
-$info      : #339ecc;
-$warning   : #e48c44;
+$positive  : var(--positive-color);
+$negative  : var(--negative-color);
+$warning   : var(--warning-color);
+$info      : var(--info-color);
 
 $space-base   : 12px;
 $space-x-base : $space-base;
@@ -119,8 +147,8 @@ $space-xl   : (x: ($space-x-base * 2), y: ($space-y-base * 2));
 
 $spaces: ('none': $space-none, 'xs': $space-xs, 'sm': $space-sm, 'md': $space-md, 'lg': $space-lg, 'xl': $space-xl);
 
-$animate-duration : .1s;
-$animate-delay    : .1s;
+$animate-duration : .2s;
+$animate-delay    : .2s;
 $animate-repeat   : 1;
 
 // Max width at which point
@@ -183,6 +211,7 @@ $light-dimmed-background : rgba(255, 255, 255, .6);
 $separator-color         : rgba(0, 0, 0, .12);
 $separator-dark-color    : oklch(27.4% .006 286.033);
 
+// tailwind colors
 $red-1: oklch(0.94 0.03 18);
 $red-2: oklch(0.88 0.06 18);
 $red-3: oklch(0.81 0.11 20);
@@ -348,21 +377,6 @@ $orange-8: oklch(0.47 0.16 37);
 $orange-9: oklch(0.41 0.12 38);
 $orange-10: oklch(0.27 0.08 36);
 $orange : $orange-5;
-$deep-orange : #ff5722;
-$deep-orange-1 : #fbe9e7;
-$deep-orange-2 : #ffccbc;
-$deep-orange-3 : #ffab91;
-$deep-orange-4 : #ff8a65;
-$deep-orange-5 : #ff7043;
-$deep-orange-6 : #ff5722;
-$deep-orange-7 : #f4511e;
-$deep-orange-8 : #e64a19;
-$deep-orange-9 : #d84315;
-$deep-orange-10 : #bf360c;
-$deep-orange-11 : #ff9e80;
-$deep-orange-12 : #ff6e40;
-$deep-orange-13 : #ff3d00;
-$deep-orange-14 : #dd2c00;
 $brown-1: oklch(0.97 0.00 106);
 $brown-2: oklch(0.92 0.00 49);
 $brown-3: oklch(0.87 0.00 56);

@@ -6,13 +6,11 @@
  */
 
 import { defineIndexScript } from "#q-app";
-import { QBigBang } from "./core/q-big-bang";
 
 // can be async
 export default defineIndexScript(api => {
   api.extendQuasarConf(() => ({
     boot: ["~quasar-app-extension-big-bang/src/runtime/boot.register.ts"],
-    css: ['~quasar-app-extension-big-bang/src/css/qbb.sass']
   }));
   api.extendQuasarConf((conf) => {
     if (conf.framework?.plugins?.includes('Notify')) {
@@ -23,5 +21,3 @@ export default defineIndexScript(api => {
     }
   })
 });
-
-export { QBigBang }

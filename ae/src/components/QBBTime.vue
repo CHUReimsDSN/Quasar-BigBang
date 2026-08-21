@@ -1,5 +1,16 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted } from "vue";
+import { date } from "quasar";
+import { computed } from "vue";
+
+// props
+const propsComponent = withDefaults(
+  defineProps<{
+    mask: string;
+  }>(),
+  {
+    mask: "YYYY/MM/DD HH:mm",
+  },
+);
 
 // consts
 const separator = ":";
@@ -16,6 +27,9 @@ function setModel(hoursArg?: number, minutesArg?: number) {
   model.value = `${dateComp.value}${dateSeparator}${format(hoursArg ?? hours.value)}${separator}${format(minutesArg ?? minutes.value)}`;
 }
 function format(value: number) {
+  if (Number.isNaN(value)) {
+    value = 0;
+  }
   return value.toString().padStart(2, "0");
 }
 function incrHour() {
@@ -59,22 +73,14 @@ const minutes = computed(() => {
   return parseInt(timeComp.value.split(separator).at(-1) ?? "0");
 });
 const dateComp = computed(() => {
-  return model.value.split(dateSeparator).at(0) ?? "";
+  const value = model.value.split(dateSeparator).at(0);
+  if (value === '') {
+    return date.formatDate(new Date(), propsComponent.mask).split(dateSeparator).at(0);
+  }
+  return value;
 });
 const timeComp = computed(() => {
-  return model.value.split(dateSeparator).at(-1) ?? "";
-});
-
-// lifeCycle
-onMounted(() => {
-  void nextTick(() => {
-    if (Number.isNaN(hours.value)) {
-      setModel(0);
-    }
-    if (Number.isNaN(minutes.value)) {
-      setModel(0, 0);
-    }
-  });
+  return model.value.split(dateSeparator).at(-1) ?? '';
 });
 </script>
 

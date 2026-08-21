@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { primaries, type TPrimaryLabel } from "../core/primary";
-import { QBigBang } from "../core/q-big-bang";
+import { BigBang } from "../core/big-bang";
 import { surfaces, TSurfaceLabel } from "../core/surface";
 
 // refs
-const selectedPrimary = ref(QBigBang.getPrimary());
-const selectedSurface = ref(QBigBang.getSurface());
+const selectedPrimary = ref(BigBang.getPrimary());
+const selectedSurface = ref(BigBang.getSurface());
 
 // functions
 function setPrimary(label: TPrimaryLabel) {
-  QBigBang.setPrimary(label);
+  BigBang.setPrimary(label);
   selectedPrimary.value = label;
 }
 function setSurface(label: TSurfaceLabel) {
-  QBigBang.setSurface(label);
+  BigBang.setSurface(label);
   selectedSurface.value = label;
 }
 </script>

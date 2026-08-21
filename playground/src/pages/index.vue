@@ -1,21 +1,27 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref } from "vue";
-import { Dark, Notify } from "quasar";
+import { computed, inject, nextTick, onMounted, ref } from "vue";
+import { Dark, Notify, QCard } from "quasar";
 import NavigationDrawer from "@/components/NavigationDrawer.vue";
 
 // consts
 const bindContainer1 = {
-  class: "flex column",
+  class: "flex column items-start",
 };
 const bindContainer2 = {
-  class: "flex row items-center q-gutter-x-md q-pb-md",
+  class: "flex row items-center q-gutter-x-md",
 };
 const bindSeparator = {
-  class: "q-ma-xl",
+  class: "q-ma-lg",
+};
+const bindCard = {
+  class: "flex column q-mt-sm",
+  style: "gap: 8px;",
 };
 const selectOptions = Object.freeze(["London", "Paris", "Madrid"]);
+const bigBang = inject("bigBang");
 
 // refs
+const showCard = ref(false);
 const input = ref("");
 const input2 = ref("");
 const input3 = ref([]);
@@ -25,11 +31,21 @@ const date = ref("");
 const datetime = ref("");
 const time = ref("");
 const tab = ref("issues");
+const dropdownOptions = ref<string[]>(Array(50));
+
+// computeds
+const cardComponent = computed(() => {
+  return showCard.value ? QCard : "div";
+});
 
 // lifeCycle
 onMounted(() => {
+  bigBang.setSaveMode("local-storage");
+  bigBang.tryLoadTheme();
+
   void nextTick(() => {
     input.value = "Hello";
+    dropdownOptions.value.fill("Option");
   });
 });
 </script>
@@ -39,8 +55,13 @@ onMounted(() => {
     <q-header style="background-color: var(--banner-color)">
       <q-toolbar class="GPL__toolbar" style="height: 54px">
         <div class="flex row items-center justify-between full-width">
-          <h1>Q-BigBang</h1>
+          <h1>Quasar BigBang</h1>
           <div class="flex row items-center q-gutter-x-md">
+            <q-icon
+              :name="showCard ? 'select_all' : 'padding'"
+              class="cursor-pointer"
+              @click="showCard = !showCard"
+            />
             <q-icon
               :name="Dark.isActive ? 'light_mode' : 'dark_mode'"
               class="cursor-pointer"
@@ -48,7 +69,7 @@ onMounted(() => {
             />
             <q-icon class="cursor-pointer" name="palette">
               <q-popup-proxy>
-                <qbb-theme-preview />
+                <qbb-theme-picker />
               </q-popup-proxy>
             </q-icon>
           </div>
@@ -60,19 +81,15 @@ onMounted(() => {
     <NavigationDrawer />
 
     <q-page-container class="GPL__page-container">
-      <q-page class="column q-px-lg q-py-sm">
-        <transition
-          appear
-          enter-active-class="animated fadeIn"
-          leave-active-class="animated fadeOut"
-        >
-          <div class="column">
-            <div class="flex row items-center q-gutter-x-md">
-              <h2>Preview</h2>
-            </div>
+      <q-page class="column q-px-lg q-pb-md">
+        <div class="column">
+          <div class="flex row items-center q-gutter-x-md">
+            <h2>Preview</h2>
+          </div>
 
-            <div v-bind="bindContainer1">
-              <h3>Boutons</h3>
+          <div v-bind="bindContainer1">
+            <h3>Boutons</h3>
+            <component v-bind="bindCard" :is="cardComponent">
               <div v-bind="bindContainer2">
                 <q-btn label="Primary" color="primary" />
                 <q-btn label="With icon" color="primary" icon="add" />
@@ -89,21 +106,26 @@ onMounted(() => {
               <div v-bind="bindContainer2">
                 <q-btn-dropdown label="Dropdown" color="primary">
                   <q-list>
-                    <q-item clickable>
-                      <q-item-section> Option 1 </q-item-section>
-                    </q-item>
-                    <q-item clickable>
-                      <q-item-section> Option 2 </q-item-section>
+                    <q-item
+                      v-for="(option, index) of dropdownOptions"
+                      :key="index"
+                      clickable
+                    >
+                      <q-item-section
+                        >{{ option }} {{ index + 1 }}</q-item-section
+                      >
                     </q-item>
                   </q-list>
                 </q-btn-dropdown>
               </div>
-            </div>
+            </component>
+          </div>
 
-            <q-separator v-bind="bindSeparator" />
+          <q-separator v-bind="bindSeparator" />
 
-            <div v-bind="bindContainer1">
-              <h3>Formulaire</h3>
+          <div v-bind="bindContainer1">
+            <h3>Formulaire</h3>
+            <component v-bind="bindCard" :is="cardComponent">
               <div v-bind="bindContainer2">
                 <q-input v-model="input" label="Input" />
                 <q-input v-model="input2" placeholder="Placeholder" />
@@ -117,6 +139,18 @@ onMounted(() => {
                   label="With rules"
                   :rules="[() => 'An error']"
                 />
+              </div>
+              <div v-bind="bindContainer2">
+                <q-input v-model="input" label="Disabled" disable />
+                <q-input v-model="input" label="Readonly" readonly />
+              </div>
+              <div v-bind="bindContainer2">
+                <div v-bind="bindContainer1">
+                  <qbb-label for="input-with-top-label">
+                    With top label
+                  </qbb-label>
+                  <q-input v-model="input" id="input-with-top-label" />
+                </div>
               </div>
               <div v-bind="bindContainer2">
                 <q-input v-model="input" label="Prefix" prefix="€" />
@@ -189,12 +223,14 @@ onMounted(() => {
                   </q-popup-proxy>
                 </q-input>
               </div>
-            </div>
+            </component>
+          </div>
 
-            <q-separator v-bind="bindSeparator" />
+          <q-separator v-bind="bindSeparator" />
 
-            <div v-bind="bindContainer1">
-              <h3>Typographie</h3>
+          <div v-bind="bindContainer1">
+            <h3>Typographie</h3>
+            <component v-bind="bindCard" :is="cardComponent">
               <div v-bind="bindContainer2">
                 <h1>H1</h1>
                 <h2>H2</h2>
@@ -222,12 +258,14 @@ onMounted(() => {
                   adipiscing elit, sed do eiusmod tempor incididunt ut labore.
                 </div>
               </div>
-            </div>
+            </component>
+          </div>
 
-            <q-separator v-bind="bindSeparator" />
+          <q-separator v-bind="bindSeparator" />
 
-            <div v-bind="bindContainer1">
-              <h3>Notifications</h3>
+          <div v-bind="bindContainer1">
+            <h3>Notifications</h3>
+            <component v-bind="bindCard" :is="cardComponent">
               <div v-bind="bindContainer2">
                 <q-btn
                   label="Succès"
@@ -258,12 +296,14 @@ onMounted(() => {
                   @click="Notify.info('Vous avez 4 nouveaux messages.')"
                 />
               </div>
-            </div>
+            </component>
+          </div>
 
-            <q-separator v-bind="bindSeparator" />
+          <q-separator v-bind="bindSeparator" />
 
-            <div v-bind="bindContainer1">
-              <h3>Chips</h3>
+          <div v-bind="bindContainer1">
+            <h3>Chips</h3>
+            <component v-bind="bindCard" :is="cardComponent">
               <div v-bind="bindContainer2">
                 <q-chip label="Default" />
                 <q-chip label="🌶️ Emoji" />
@@ -271,54 +311,52 @@ onMounted(() => {
                 <q-chip label="Clickable" clickable />
                 <q-chip label="Primary" color="primary" />
               </div>
-            </div>
-
-            <q-separator v-bind="bindSeparator" />
-
-            <div v-bind="bindContainer1">
-              <h3>Tabs (dans q-card)</h3>
-              <div v-bind="bindContainer2">
-                <q-card class="flex column no-padding">
-                  <q-tabs v-model="tab">
-                    <q-tab name="code" label="Code" icon="code" />
-                    <q-tab name="issues" label="Issues" icon="bug_report" />
-                    <q-tab name="pr" label="Pull Requests" icon="merge" />
-                    <q-tab name="settings" label="Settings" icon="settings" />
-                  </q-tabs>
-
-                  <q-tab-panels v-model="tab" keep-alive>
-                    <q-tab-panel name="code">
-                      <h4 class="no-margin">Code</h4>
-                      <div>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore.
-                      </div>
-                    </q-tab-panel>
-                    <q-tab-panel name="issues">
-                      <h4 class="no-margin">Issues</h4>
-                      <div>There's nothing here</div>
-                    </q-tab-panel>
-                    <q-tab-panel name="pr">
-                      <h4 class="no-margin">Pull Requests</h4>
-                      <div>Lorem ipsum dolor sit amet.</div>
-                    </q-tab-panel>
-                    <q-tab-panel name="settings">
-                      <h4 class="no-margin">Issues</h4>
-                      <div>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore. Lorem ipsum
-                        dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore. Lorem ipsum dolor
-                        sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore.
-                      </div>
-                    </q-tab-panel>
-                  </q-tab-panels>
-                </q-card>
-              </div>
-            </div>
+            </component>
           </div>
-        </transition>
+
+          <q-separator v-bind="bindSeparator" />
+
+          <div v-bind="bindContainer1">
+            <h3>Tabs</h3>
+            <component v-bind="bindCard" :is="cardComponent">
+              <q-tabs v-model="tab">
+                <q-tab name="code" label="Code" icon="code" />
+                <q-tab name="issues" label="Issues" icon="bug_report" />
+                <q-tab name="pr" label="Pull Requests" icon="merge" />
+                <q-tab name="settings" label="Settings" icon="settings" />
+              </q-tabs>
+
+              <q-tab-panels v-model="tab" keep-alive>
+                <q-tab-panel name="code">
+                  <h4 class="no-margin">Code</h4>
+                  <div>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore.
+                  </div>
+                </q-tab-panel>
+                <q-tab-panel name="issues">
+                  <h4 class="no-margin">Issues</h4>
+                  <div>There's nothing here</div>
+                </q-tab-panel>
+                <q-tab-panel name="pr">
+                  <h4 class="no-margin">Pull Requests</h4>
+                  <div>Lorem ipsum dolor sit amet.</div>
+                </q-tab-panel>
+                <q-tab-panel name="settings">
+                  <h4 class="no-margin">Issues</h4>
+                  <div>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore. Lorem ipsum dolor
+                    sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore.
+                  </div>
+                </q-tab-panel>
+              </q-tab-panels>
+            </component>
+          </div>
+        </div>
       </q-page>
     </q-page-container>
   </q-layout>
