@@ -79,6 +79,7 @@
   --q-info: var(--info-color);
   --q-dark: var(--text-color);
   --q-dark-page: var(--page-background);
+  --q-transition-duration: 0.2s
 }
 
 body.body--dark {
@@ -560,8 +561,6 @@ $dark-shadows-up: ($dark-shadow-up-1, $dark-shadow-up-2, $dark-shadow-up-3, $dar
 
 $generic-border-radius                    : 6px;
 $generic-hover-transition                 : .2s cubic-bezier(.25, .8, .5, 1);
-$generic-border-color                     : #d7d7e0;
-$generic-border-color-dark                : #52525B;
 $generic-box-shadow                       : none;
 $typography-font-family                   : 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $min-line-height                          : 1.12;
@@ -639,25 +638,25 @@ $dialog-progress-font-size                : 4rem;
 
 $field-marginal-font-size                 : 20px;
 $field-marginal-avatar-font-size          : 28px;
-$field-bottom-font-size                   : 12px;
+$field-bottom-font-size                   : 13px;
 $field-bottom-line-height                 : 1;
 $field-with-bottom-padding-bottom         : $field-bottom-font-size * $field-bottom-line-height + 6px;
 $field-label-font-size                    : 14px;
 $field-label-line-height                  : 1.25;
-$field-label-top                          : 8px;
+$field-label-top                          : 18px;
 $field-label-letter-spacing               : .00937em;
 $field-dense-bottom-font-size             : 11px;
 $field-dense-with-bottom-padding-bottom   : $field-dense-bottom-font-size * $field-bottom-line-height + 6px;
 $field-dense-label-font-size              : 14px;
 $field-dense-label-top                    : 10px;
 $field-dense-marginal-avatar-font-size    : 24px;
-$field-transition                         : 0.2s cubic-bezier(.4,0,.2,1);
+$field-transition                         : 0.2s cubic-bezier(.4,0,.2,1) !important;
 $field-transition-label-right-down        : .2s cubic-bezier(.4,0,.2,1);
 $field-transition-label-right-up          : .2s cubic-bezier(.4,0,.2,1);
 $field-action-font-size                   : 20px;
 $field-icon-font-size                     : 19px;
-$field-height                             : 36px;
-$field-control-padding-top                : 6px;
+$field-dense-height                       : 36px;
+$field-dense-control-padding-top          : 6px;
 $field-min-width                          : 200px;
 
 $item-base-color                          : $grey-5;
@@ -754,8 +753,6 @@ $layout-shadow-dark                       : 0 0 10px 2px rgba($dark-shadow-color
 
 $menu-box-shadow                          : 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 $menu-box-shadow-dark                     : 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-$menu-max-width                           : 95vw;
-$menu-max-height                          : 65vh;
 
 $rating-grade-color                       : $yellow;
 $rating-shadow                            : 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);

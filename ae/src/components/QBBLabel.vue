@@ -1,5 +1,12 @@
+<script setup lang="ts">
+// props
+const propsComponents = defineProps<{
+  label?: string;
+}>()
+</script>
+
 <template>
-  <label v-bind="$props" style="font-weight: 500; padding: 4px 0;">
-    <slot></slot>
-  </label>
+  <div style="font-weight: 500; padding: 4px 0;">
+    <slot>{{ propsComponents.label }}</slot>
+  </div>
 </template>

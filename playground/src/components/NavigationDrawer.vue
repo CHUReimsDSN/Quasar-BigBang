@@ -95,18 +95,9 @@ const isRouteValid = (route: TRoute, regex: RegExp) => {
 </script>
 
 <template>
-  <q-drawer
-    v-model="displayDrawer"
-    show-if-above
-    bordered
-    :mini="miniState && !overHeader && !isWriting"
-    :mini-to-overlay="!overHeader"
-    noMiniAnimation
-    @mouseenter="miniState = false"
-    @mouseleave="miniState = true"
-    :class="{ 'hide-scrollbar': miniState }"
-    :width="250"
-  >
+  <q-drawer v-model="displayDrawer" :mini="miniState && !overHeader && !isWriting" :mini-to-overlay="!overHeader"
+    noMiniAnimation @mouseenter="miniState = false" @mouseleave="miniState = true"
+    :class="{ 'hide-scrollbar': miniState }" :width="250">
     <q-list class="q-pa-md">
       <q-item>
         <q-item-section avatar>
@@ -118,24 +109,14 @@ const isRouteValid = (route: TRoute, regex: RegExp) => {
         </q-item-section>
 
         <q-item-section side>
-          <q-icon
-            :name="overHeader ? 'mdi-pin-off' : 'mdi-pin'"
-            :color="overHeader ? 'primary' : ''"
-            class="cursor-pointer"
-            @click="overHeader = !overHeader"
-          />
+          <q-icon :name="overHeader ? 'mdi-pin-off' : 'mdi-pin'" :color="overHeader ? 'primary' : ''"
+            class="cursor-pointer" @click="overHeader = !overHeader" />
         </q-item-section>
       </q-item>
 
       <div class="q-py-md q-px-sm flex flex-center">
-        <q-input
-          v-if="!miniState || overHeader || isWriting"
-          v-model="searchedRoute"
-          clearable
-          placeholder="Search"
-          @blur="() => (isWriting = false)"
-          @focus="() => (isWriting = true)"
-        >
+        <q-input v-if="!miniState || overHeader || isWriting" v-model="searchedRoute" clearable placeholder="Search"
+          @blur="() => (isWriting = false)" @focus="() => (isWriting = true)">
           <template v-slot:prepend>
             <q-icon name="search" />
           </template>
@@ -143,12 +124,7 @@ const isRouteValid = (route: TRoute, regex: RegExp) => {
         <q-icon v-else name="search" class="menu-item" />
       </div>
 
-      <NavigationItem
-        v-for="(route, i) in navRoutes"
-        :key="i"
-        :route="route"
-        :searchedRoute="searchedRoute"
-      />
+      <NavigationItem v-for="(route, i) in navRoutes" :key="i" :route="route" :searchedRoute="searchedRoute" />
     </q-list>
   </q-drawer>
 </template>

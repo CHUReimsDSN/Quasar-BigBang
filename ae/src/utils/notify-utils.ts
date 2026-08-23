@@ -8,7 +8,7 @@ export class NotifyUtils {
   };
   static extends() {
     if (!Notify) {
-      return
+      return;
     }
 
     Notify.positive = (message: string, options?: QNotifyCreateOptions) => {
