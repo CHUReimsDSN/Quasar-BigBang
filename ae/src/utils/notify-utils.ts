@@ -53,5 +53,17 @@ export class NotifyUtils {
         ...options,
       });
     };
+
+    Notify.secondary = (message: string, options?: QNotifyCreateOptions) => {
+      Notify.create({
+        type: "secondary",
+        message: "Information",
+        classes: 'bg-secondary',
+        icon: 'info',
+        caption: message,
+        ...NotifyUtils.defaultOptions,
+        ...options,
+      });
+    };
   }
 }

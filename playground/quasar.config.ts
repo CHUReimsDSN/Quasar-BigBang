@@ -13,7 +13,7 @@ export default defineConfig((/* ctx */) => ({
 
   framework: {
     config: {
-      dark: 'auto'
+      dark: 'auto',
     },
     plugins: ['Notify']
   },

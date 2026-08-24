@@ -1,8 +1,11 @@
 import {
+  QBanner,
   QBtn,
   QBtnDropdown,
+  QBtnGroup,
   QCard,
   QDate,
+  QDialog,
   QDrawer,
   QExpansionItem,
   QField,
@@ -10,16 +13,28 @@ import {
   QIcon,
   QInput,
   QItem,
+  QLayout,
   QList,
   QMenu,
+  QRadio,
   QSelect,
   QTab,
+  QTabs,
+  QToggle,
+  QTooltip,
+  QTree,
+  QUploader,
 } from "quasar";
 
 export function setupDefaultProps() {
-  const defaultTransitionDuration = 200;
+  const defaultTransitionDuration = 150;
   const transitionShow = "fade";
   const transitionHide = "fade";
+
+  QLayout.props.view = {
+    type: String,
+    default: 'lhh LpR fFf'
+  }
 
   QBtn.props.unelevated = {
     type: Boolean,
@@ -30,6 +45,11 @@ export function setupDefaultProps() {
     default: true,
   };
   QBtn.props.dense = {
+    type: Boolean,
+    default: true,
+  };
+
+  QBtnGroup.props.unelevated = {
     type: Boolean,
     default: true,
   };
@@ -77,6 +97,11 @@ export function setupDefaultProps() {
   QIcon.props.size = {
     type: String,
     default: "20px",
+  };
+
+  QTabs.props.noCaps = {
+    type: Boolean,
+    default: true,
   };
 
   QTab.props.noCaps = {
@@ -135,5 +160,53 @@ export function setupDefaultProps() {
   QSelect.props.hideBottomSpace = {
     type: Boolean,
     default: true,
+  };
+
+  QToggle.props.dense = {
+    type: Boolean,
+    default: true,
+  };
+
+  QRadio.props.dense = {
+    type: Boolean,
+    default: true,
+  };
+
+  QUploader.props.bordered = {
+    type: Boolean,
+    default: true,
+  };
+
+  QTooltip.props.transitionDuration.default = defaultTransitionDuration;
+  QTooltip.props.transitionShow.default = transitionShow;
+  QTooltip.props.transitionHide.default = transitionHide;
+
+  QBanner.props.dense = {
+    type: Boolean,
+    default: true,
+  };
+
+  QDialog.props.transitionDuration.default = defaultTransitionDuration;
+  QDialog.props.transitionShow = {
+    type: String,
+    default: transitionShow,
+  };
+  QDialog.props.transitionHide = {
+    type: String,
+    default: transitionHide,
+  };
+
+  QTree.props.dense = {
+    type: Boolean,
+    default: true,
+  };
+  QTree.props.duration.default = defaultTransitionDuration;
+  QTree.props.noConnectors = {
+    type: Boolean,
+    default: true,
+  };
+  QTree.props.icon = {
+    type: String,
+    default: "chevron_right",
   };
 }

@@ -44,14 +44,19 @@
   --hover-background: var(--surface-100);
   --page-background: var(--surface-50);
   --drawer-background: var(--surface-100);
-  --header-background: var(--surface-100);
+  --header-background: var(--surface-50);
 
   --inactive-color: var(--surface-500);
 
   --field-background: var(--surface-0);
   --field-border-color: var(--surface-300);
   --field-border-color-hover: var(--surface-400);
+  --field-highlight-color: var(--surface-50);
+  --field-highlight-color-hover: var(--surface-0);
+  --field-lowlight-color: var(--surface-300);
+  --field-lowlight-color-hover: var(--surface-400);
   --field-focus-color: var(--primary-500);
+  --field-focus-color-hover: var(--primary-400);
 
   --menu-item-color: var(--surface-700);
   --menu-item-color-hover: var(--surface-950);
@@ -59,17 +64,21 @@
 
   --btn-text-color: var(--surface-0);
 
-  --positive-color: light-dark(#42c360, #5fdb82);
-  --positive-hover-color: light-dark(hsl(from var(--positive-color) h s 45%), hsl(from var(--positive-color) h s 75%));
+  --positive-color: #42c360;
+  --positive-hover-color: #45d366;
+  --positive-background-alt-color: #e9fcec;
 
-  --negative-color: light-dark(#fa4c40, #ec554d);
-  --negative-hover-color: light-dark(hsl(from var(--negative-color) h s 47%), hsl(from var(--negative-color) h 100% 75%));
+  --negative-color: #f53e36;
+  --negative-hover-color: #ff4f43;
+  --negative-background-alt-color: #fceae7;
 
-  --warning-color: light-dark(#fa8328, #f38f32);
-  --warning-hover-color: light-dark(hsl(from var(--warning-color) h s 47%), hsl(from var(--warning-color) h s 75%));
+  --warning-color: #fa8328;
+  --warning-hover-color: #ff8020;
+  --warning-background-alt-color: #fdf1e7;
 
-  --info-color: light-dark(#24a4e8, #44bbf7);
-  --info-hover-color: light-dark(hsl(from var(--info-color) h s 45%), hsl(from var(--info-color) h s 75%));
+  --info-color: #24a4e8;
+  --info-hover-color: #28aef7;
+  --info-background-alt-color: #e8f6fd;
 
   --q-primary: var(--primary-color);
   --q-secondary: var(--secondary-color);
@@ -77,7 +86,7 @@
   --q-negative: var(--negative-color);
   --q-warning: var(--warning-color);
   --q-info: var(--info-color);
-  --q-dark: var(--text-color);
+  --q-dark: var(--card-background);
   --q-dark-page: var(--page-background);
   --q-transition-duration: 0.2s
 }
@@ -108,7 +117,12 @@ body.body--dark {
   --field-background: var(--surface-950);
   --field-border-color: var(--surface-600);
   --field-border-color-hover: var(--surface-500);
+  --field-highlight-color: var(--surface-400);
+  --field-highlight-color-hover: var(--surface-300);
+  --field-lowlight-color: var(--surface-700);
+  --field-lowlight-color-hover: var(--surface-600);
   --field-focus-color: var(--primary-400);
+  --field-focus-color-hover: var(--primary-300);
 
   --menu-item-color: var(--surface-300);
   --menu-item-color-hover: var(--surface-0);
@@ -116,13 +130,29 @@ body.body--dark {
 
   --btn-text-color: var(--surface-900);
 
+  --positive-color: #3ed984;
+  --positive-hover-color: rgb(60, 177, 87);
+  --positive-background-alt-color: #2d6c3466;
+
+  --negative-color: #f34b46;
+  --negative-hover-color: #eb382b;
+  --negative-background-alt-color: #8a200f66;
+
+  --warning-color: #f7861d;
+  --warning-hover-color: #ec7f19;
+  --warning-background-alt-color: #8e4d0b66;
+
+  --info-color: #52a1fe;
+  --info-hover-color: #4a94e9;
+  --info-background-alt-color: #115c8866;
+
   --q-primary: var(--primary-color);
   --q-secondary: var(--secondary-color);
   --q-positive: var(--positive-color);
   --q-negative: var(--negative-color);
   --q-warning: var(--warning-color);
   --q-info: var(--info-color);
-  --q-dark: var(--text-color);
+  --q-dark: var(--card-background);
   --q-dark-page: var(--page-background);
 }
 
@@ -757,11 +787,11 @@ $menu-box-shadow-dark                     : 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0
 $rating-grade-color                       : $yellow;
 $rating-shadow                            : 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
 
-$tooltip-color                            : #fafafa;
-$tooltip-background                       : $grey-7;
+$tooltip-color                            : var(--text-color);
+$tooltip-background                       : var(--field-lowlight-color);
 $tooltip-padding                          : 6px 10px;
 $tooltip-border-radius                    : $generic-border-radius;
-$tooltip-fontsize                         : 10px;
+$tooltip-fontsize                         : 13px;
 $tooltip-mobile-padding                   : 8px 16px;
 $tooltip-mobile-fontsize                  : 14px;
 $tooltip-max-width                        : 95vw;

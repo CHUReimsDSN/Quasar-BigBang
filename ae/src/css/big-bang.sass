@@ -40,7 +40,7 @@ body // ✅
 .q-dialog // ✅
   &__backdrop
     background: rgba(from var(--card-background))
-    backdrop-filter: blur(10px)
+    backdrop-filter: blur(2px)
 
 .q-item // ✅
   border-radius: $generic-border-radius
@@ -306,6 +306,73 @@ body // ✅
   &__dropdown-icon
     transition: transform 0.2s
 
+.q-toggle // ⚠️ props color broken
+  &__thumb
+    transition-duration: 0.2s
+    &:after
+      transition: background-color 0.2s
+      box-shadow: none
+    &:before
+      display: none
+  &__track
+    opacity: 1 !important
+    transition-duration: 0.2s
+  &__inner
+    .q-toggle__track
+      background-color: var(--field-lowlight-color)
+    .q-toggle__thumb
+      &:after
+        background-color: var(--field-highlight-color)
+    &--truthy
+      .q-toggle__track
+        background-color: var(--field-focus-color)
+      .q-toggle__thumb
+        &:after
+          background-color: var(--field-background)
+  &:hover
+    .q-toggle__track
+      background-color: var(--field-lowlight-color-hover)
+    .q-toggle__thumb
+      &:after
+        background-color: var(--field-highlight-color-hover)
+    &:has(.q-toggle__inner--truthy)
+      .q-toggle__track
+        background-color: var(--field-focus-color-hover)
+      .q-toggle__thumb
+        &:after
+          background-color: var(--field-background)
+  &--dense
+    .q-toggle__track
+      height: 0.53em
+      border-radius: 0.3em
+    .q-toggle__inner
+      height: 0.65em
+      width: 0.88em !important
+      &--truthy
+        .q-toggle__thumb
+          left: 0.45em
+      &--indet
+        .q-toggle__thumb
+          left: 0.26em
+    .q-toggle__thumb
+      height: 0.35em
+      width: 0.35em
+      top: 0.165em
+      left: 0.095em
+
+.q-radio // ⚠️ props color broken
+  &__inner
+    color: var(--field-border-color) !important
+    &:before
+      display: none
+    &--truthy
+      color: var(--field-focus-color) !important
+  &:hover
+    .q-radio__inner
+      color: var(--field-border-color-hover) !important
+      &--truthy
+        color: var(--field-focus-color-hover) !important
+
 .q-btn // ✅
   transition: background .2s
   &--dense
@@ -328,8 +395,12 @@ body // ✅
       .q-btn-dropdown__arrow
         margin-left: 4px
 
+.q-btn-group // ✅
+  border-radius: $generic-border-radius
+
 .q-card // ✅
   display: flex
+  flex-direction: column
   background: var(--card-background)
   padding: 0.8rem
   &--bordered
@@ -337,13 +408,44 @@ body // ✅
     border: 1px solid var(--card-border-color)
     border-radius: 12px
 
-.q-uploader
+.q-uploader // ✅
   box-shadow: none
   width: auto;
-  max-width: max-content;
-  min-width: 200px;
-  &__title
-    padding-left: 4px
+  max-width: max-content
+  min-width: 200px
+  border-radius: $generic-border-radius
+  &__header
+    border-top-left-radius: 5px
+    border-top-right-radius: 5px
+    &-content
+      padding: 6px
+  &__list
+    background-color: var(--field-background)
+    border-bottom-left-radius: 5px
+    border-bottom-right-radius: 5px
+  &--bordered
+    border: 1px solid var(--field-border-color)
+
+.q-banner // ✅
+  border-radius: $generic-border-radius
+  &.bg-positive
+    background-color: var(--positive-background-alt-color) !important
+  &.bg-negative
+    background-color: var(--negative-background-alt-color) !important
+  &.bg-warning
+    background-color: var(--warning-background-alt-color) !important
+  &.bg-info
+    background-color: var(--info-background-alt-color) !important
+
+// TODO expansion-item avatar image
+
+.q-tree // ✅
+  &--dense
+    .q-tree__node-header
+      padding: 3px
+
+.q-badge // ✅
+  background: var(--secondary-color)
 
 .q-chip // ✅
   background: var(--secondary-color)
@@ -392,7 +494,7 @@ body // ✅
   max-width: 100%
   margin: 20px 20px 0
   box-shadow: $generic-box-shadow
-  transition: transform 0.2s, opacity 0.2s   
+  transition: transform 0.2s, opacity 0.2s
   &__caption
     opacity: 1
     font-size: 13px
@@ -411,28 +513,36 @@ body // ✅
     padding: 2px 12px
     min-height: 36px
 
+body.body--dark // ✅
+  .q-notification
+    backdrop-filter: blur(3px)
+
 $notification-colors: ( // ✅
   positive: var(--positive-color),
   warning: var(--warning-color),
   negative: var(--negative-color),
-  info: var(--info-color)
+  info: var(--info-color),
+  secondary: var(--secondary-color)
 )
 
 @each $name, $color in $notification-colors // ✅
   .q-notification.bg-#{$name}
-    background: hsl(from $color h 85% 95%) !important
-    border-color: hsl(from $color h 100% 80%) !important
+    background-color: var(--#{$name}-background-alt-color) !important
+    border-color: hsl(from $color h s l / 0.3) !important
     border: 1px solid
     .q-notification__icon
       color: $color
     .q-notification__message
       color: $color
     .q-notification__caption
-     color: var(--text-color)
-  body.body--dark .q-notification.bg-#{$name}
-    background: hsl(from $color h s 30% / 0.3) !important
-    border-color: hsl(from $color h s 23%) !important
-
+      color: var(--text-color)
+  .q-notification.bg-secondary
+    background: var(--secondary-color) !important
+    border-color: hsl(from var(--secondary-color) h s l / 0.3) !important
+    .q-notification__message
+      color: var(--secondary-text-color)
+    .q-notification__icon--additional
+      color: var(--secondary-text-color)
 
 
 // utils
