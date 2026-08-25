@@ -8,26 +8,27 @@ export default defineConfig((/* ctx */) => ({
   extras: [
     "roboto-font", // optional, you are not bound to it
     "material-icons", // optional, you are not bound to it
-    'mdi-v7'
+    "mdi-v7",
   ],
 
   framework: {
     config: {
-      dark: 'auto',
+      dark: "auto",
     },
-    plugins: ['Notify']
+    plugins: ["Notify"],
   },
+  animations: ["fadeIn", "fadeOut"],
 
   build: {
     filenameBasedRouting: true,
     vueRouterMode: "history",
     typescript: {
       strict: true,
-      vueShim: true
-    }
+      vueShim: true,
+    },
   },
 
   devServer: {
-    open: true
-  }
+    open: true,
+  },
 }));

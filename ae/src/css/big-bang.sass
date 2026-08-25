@@ -77,10 +77,14 @@ body // ✅
         margin-right: -4px
 
 .q-expansion-item // ✅
-  &__content
-    border-left: 1px solid var(--card-border-color);
-    margin-left: 21px;
-    padding-left: 4px;
+  &__toggle-icon
+    padding-left: 4px
+  &.menu-expandable
+    .q-expansion-item__content
+      border-left: 1px solid var(--card-border-color);
+      margin-left: 21px;
+      padding: 0px;
+      padding-left: 4px;
 
 .q-menu // ✅
   padding: 6px
@@ -94,6 +98,7 @@ body // ✅
   padding: 0 14px
   padding-top: 8px
   border-bottom: 1px solid var(--field-border-color-hover)
+  transition-duration: 0.2s
   &--full
     min-height: 1px
   .q-focus-helper
@@ -106,6 +111,7 @@ body // ✅
       color: var(--text-color)
   &__indicator
     height: 1px
+    transition-duration: 0.1s !important
   &__label
     font-size: 0.875rem
   &__content
@@ -198,9 +204,7 @@ body // ✅
   width: auto
   max-width: max-content
   min-width: $field-min-width
-  ::-ms-clear,
-  ::-ms-reveal
-    display: none
+  caret-color: var(--text-color)
   &__marginal
     .q-avatar
       font-size: $field-marginal-avatar-font-size
@@ -217,14 +221,18 @@ body // ✅
   &__bottom
     &--animated
       .q-field__messages
-        transition: 0s
+        transition: 0.2s
   &__control
-    color: var(--primary-color)
+    color: var(--field-focus-color)
     background-color: var(--field-background)
+    &:before
+      transition-duration: 0.2s !important
+    &:after
+      transition-duration: 0.2s !important
   &__native, &__prefix, &__suffix, &__input
     color: $input-text-color
   &__label, &.--float
-    transition-duration: 0.2s !important;
+    transition-duration: 0.2s !important
   &__suffix, &__prefix
     transition-duration: 0.2s
   &--outlined
@@ -242,8 +250,6 @@ body // ✅
     &.q-field--highlighted
       .q-field__control:hover:before
         border-color: transparent
-      .q-field__control:after
-        border-color: var(--field-focus-color)
     &.q-field--readonly
       .q-field__control
         &:after
@@ -255,7 +261,7 @@ body // ✅
     .q-field--with-bottom
       padding-bottom: inherit
     .q-field__control, .q-field__marginal
-      height: $field-dense-height
+      height: $field-dense-height // TODO remove ? calcler padding pour faire pile 36px
       min-height: $field-dense-height !important
     .q-field__control
       padding: 0 8px
@@ -274,11 +280,14 @@ body // ✅
       padding-top: 4px
   &--error
     .q-field__bottom
-      color: var(--q-negative)
+      color: var(--negative-color)
     .q-field__control:after
-      border-color: var(--q-negative) !important
+      border-color: var(--negative-color) !important    
   &--disabled
     opacity: 0.6
+  &.q-textarea
+    .q-field__control
+      height: auto
 
 .q-select // ✅
   &.q-field--dense
@@ -306,7 +315,7 @@ body // ✅
   &__dropdown-icon
     transition: transform 0.2s
 
-.q-toggle // ⚠️ props color broken
+.q-toggle // ✅
   &__thumb
     transition-duration: 0.2s
     &:after
@@ -318,29 +327,31 @@ body // ✅
     opacity: 1 !important
     transition-duration: 0.2s
   &__inner
-    .q-toggle__track
-      background-color: var(--field-lowlight-color)
+    color: var(--field-lowlight-color)
     .q-toggle__thumb
       &:after
         background-color: var(--field-highlight-color)
     &--truthy
-      .q-toggle__track
-        background-color: var(--field-focus-color)
+      color: var(--field-focus-color)
       .q-toggle__thumb
         &:after
           background-color: var(--field-background)
+  &--dark
+    .q-toggle__inner
+      color: var(--field-lowlight-color)
+      &--truthy
+        color: var(--field-focus-color)
   &:hover
-    .q-toggle__track
-      background-color: var(--field-lowlight-color-hover)
-    .q-toggle__thumb
-      &:after
-        background-color: var(--field-highlight-color-hover)
-    &:has(.q-toggle__inner--truthy)
-      .q-toggle__track
-        background-color: var(--field-focus-color-hover)
-      .q-toggle__thumb
-        &:after
-          background-color: var(--field-background)
+    .q-toggle__inner
+      &--truthy
+        .q-toggle__thumb
+          &:after
+            background-color: var(--field-lowlight-color)
+      &:not(&--truthy)
+        color: var(--field-lowlight-color-hover)
+        .q-toggle__thumb
+          &:after
+            background-color: var(--field-highlight-color-hover)
   &--dense
     .q-toggle__track
       height: 0.53em
@@ -360,18 +371,23 @@ body // ✅
       top: 0.165em
       left: 0.095em
 
-.q-radio // ⚠️ props color broken
+.q-radio // ✅
   &__inner
-    color: var(--field-border-color) !important
+    transition: color 0.2s
+    color: var(--field-border-color)
     &:before
       display: none
     &--truthy
-      color: var(--field-focus-color) !important
+      color: var(--field-focus-color)
+  &--dark
+    .q-radio__inner
+      color: var(--field-border-color)
+      &--truthy
+        color: var(--field-focus-color)
   &:hover
     .q-radio__inner
-      color: var(--field-border-color-hover) !important
-      &--truthy
-        color: var(--field-focus-color-hover) !important
+      &:not(&--truthy)
+        color: var(--field-border-color-hover)
 
 .q-btn // ✅
   transition: background .2s
@@ -403,6 +419,8 @@ body // ✅
   flex-direction: column
   background: var(--card-background)
   padding: 0.8rem
+  &--flat
+    background: unset
   &--bordered
     box-shadow: none
     border: 1px solid var(--card-border-color)
@@ -424,7 +442,7 @@ body // ✅
     border-bottom-left-radius: 5px
     border-bottom-right-radius: 5px
   &--bordered
-    border: 1px solid var(--field-border-color)
+    border: 1px solid var(--card-border-color)
 
 .q-banner // ✅
   border-radius: $generic-border-radius
@@ -436,8 +454,6 @@ body // ✅
     background-color: var(--warning-background-alt-color) !important
   &.bg-info
     background-color: var(--info-background-alt-color) !important
-
-// TODO expansion-item avatar image
 
 .q-tree // ✅
   &--dense
@@ -473,6 +489,9 @@ body // ✅
   background: var(--card-border-color) !important
 
 .q-list // ✅
+  &--bordered
+    border-radius: $generic-border-radius
+    border: 1px solid var(--card-border-color)
   &--dense
     .q-item
       min-height: $q-item-min-height
@@ -578,7 +597,6 @@ $notification-colors: ( // ✅
 
 
 
-// TODO ?
 .bg-primary
   background: var(--primary-color) !important
   color: var(--btn-text-color) !important

@@ -21,7 +21,8 @@
   "devDependencies": {
     "@quasar/app-vite": "catalog:",
     "@types/node": "^22.19.11",
-    "quasar-app-extension-big-bang": "workspace:*"
+    "quasar-app-extension-big-bang": "workspace:*",
+    "shiki": "^4.4.3"
   },
   "productName": "Quasar BigBang Playground"
 }

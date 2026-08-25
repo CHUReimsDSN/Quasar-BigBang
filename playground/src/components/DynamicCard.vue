@@ -15,15 +15,12 @@ const showCard = defineModel({ default: false })
 const cardComponent = computed(() => {
     return showCard.value ? QCard : "div";
 });
-const bindSeparator = computed(() => {
+const bindSpace = computed(() => {
     if (showCard.value) {
-        return {
-            style: 'margin-top: 20px; background: transparent !important;'
-        };
+        return {};
     }
     return {
-        class: "q-ma-lg full-width",
-        style: 'margin-top: 30px;'
+        class: "q-ma-sm full-width",
     };
 })
 </script>
@@ -32,5 +29,5 @@ const bindSeparator = computed(() => {
     <component v-bind="bindCard" :is="cardComponent">
         <slot></slot>
     </component>
-    <q-separator v-bind="bindSeparator" />
+    <div v-bind="bindSpace"></div>
 </template>

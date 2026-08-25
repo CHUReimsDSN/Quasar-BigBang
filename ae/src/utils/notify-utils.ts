@@ -14,7 +14,7 @@ export class NotifyUtils {
     Notify.positive = (message: string, options?: QNotifyCreateOptions) => {
       Notify.create({
         type: "positive",
-        message: "Succès",
+        message: "Success",
         icon: "check",
         caption: message,
         ...NotifyUtils.defaultOptions,
@@ -25,7 +25,7 @@ export class NotifyUtils {
     Notify.negative = (message: string, options?: QNotifyCreateOptions) => {
       Notify.create({
         type: "negative",
-        message: "Erreur",
+        message: "Error",
         icon: "cancel",
         caption: message,
         ...NotifyUtils.defaultOptions,
@@ -36,7 +36,7 @@ export class NotifyUtils {
     Notify.warning = (message: string, options?: QNotifyCreateOptions) => {
       Notify.create({
         type: "warning",
-        message: "Avertissement",
+        message: "Warning",
         icon: "warning",
         caption: message,
         ...NotifyUtils.defaultOptions,
@@ -58,8 +58,8 @@ export class NotifyUtils {
       Notify.create({
         type: "secondary",
         message: "Information",
-        classes: 'bg-secondary',
-        icon: 'info',
+        classes: "bg-secondary",
+        icon: "info",
         caption: message,
         ...NotifyUtils.defaultOptions,
         ...options,

@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import type { TRouteMenu } from '@/utils/routes-menu';
 import { computed } from 'vue';
-import type { TRoute } from './NavigationDrawer.vue';
 
 // Types
 type TProps = {
-  route: TRoute;
+  route: TRouteMenu;
   searchedRoute?: string | undefined;
 };
 
@@ -22,13 +22,13 @@ const navRoutes = computed(() => {
 });
 
 // functions
-const isRouteValid = (route: TRoute, regex: RegExp) => {
+const isRouteValid = (route: TRouteMenu, regex: RegExp) => {
   if (regex.test(route.label ?? '')) {
     return true;
   }
   if (route.children) {
     const enfantsValides = [];
-    route.children.forEach((child: TRoute) => {
+    route.children.forEach((child: TRouteMenu) => {
       if (isRouteValid(child, regex)) {
         enfantsValides.push(child);
       }
@@ -43,29 +43,13 @@ const isRouteValid = (route: TRoute, regex: RegExp) => {
 
 <template>
   <div>
-    <q-expansion-item
-      v-if="navRoutes"
-      :default-opened="!!searchedRoute"
-      :icon="route.icon ?? ''"
-      :label="route.label ?? '???'"
-      headerClass="menu-item"
-      group="groupAccordionMode"
-    >
-      <NavigationItem
-        v-for="(childRoute, i) in navRoutes"
-        :key="i"
-        :searched-route="searchedRoute"
-        :route="childRoute"
-      />
+    <q-expansion-item v-if="navRoutes" :default-opened="!!searchedRoute" :icon="route.icon ?? ''"
+      :label="route.label ?? '???'" headerClass="menu-item" class="menu-expandable" group="groupAccordionMode">
+      <NavigationItem v-for="(childRoute, i) in navRoutes" :key="i" :searched-route="searchedRoute"
+        :route="childRoute" />
     </q-expansion-item>
 
-    <q-item
-      v-else
-      clickable
-      activeClass="active-menu-item"
-      :active="route.active"
-      class="menu-item"
-    >
+    <q-item v-else clickable activeClass="active-menu-item" :active="route.active" class="menu-item" :to="route.to">
       <q-item-section v-if="route.icon" avatar>
         <q-icon :name="route.icon" />
       </q-item-section>

@@ -1,68 +1,15 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { appRouteMenuItems, type TRouteMenu } from "@/utils/routes-menu";
 import NavigationItem from "./NavigationItem.vue";
 
-// types
-export type TRoute = {
-  label?: string;
-  icon?: string;
-  children?: TRoute[];
-  active?: boolean;
-};
-
 // refs
-const displayDrawer = ref(true);
+const drawer = defineModel({ default: true });
 const miniState = ref(true);
 const overHeader = ref(true);
 const searchedRoute = ref<string>();
 const isWriting = ref(false);
-const routes = ref<TRoute[]>([
-  {
-    label: "Dashboard",
-    icon: "dashboard",
-    active: true,
-  },
-  {
-    label: "Users",
-    icon: "person",
-  },
-  {
-    label: "Issues",
-    icon: "bug_report",
-  },
-  {
-    label: "Data",
-    icon: "bar_chart",
-    children: [
-      { label: "Charts" },
-      {
-        label: "Tree",
-      },
-    ],
-  },
-  {
-    label: "Settings",
-    icon: "settings",
-    children: [
-      {
-        label: "General",
-        icon: "construction",
-      },
-      {
-        label: "Members",
-        icon: "group",
-      },
-      {
-        label: "Notifications",
-        icon: "notifications",
-      },
-      {
-        label: "Security",
-        icon: "lock",
-      },
-    ],
-  },
-]);
+const routes = ref<TRouteMenu[]>(appRouteMenuItems);
 
 // Computeds
 const navRoutes = computed(() => {
@@ -75,13 +22,13 @@ const navRoutes = computed(() => {
 });
 
 // Fonctions
-const isRouteValid = (route: TRoute, regex: RegExp) => {
+const isRouteValid = (route: TRouteMenu, regex: RegExp) => {
   if (regex.test(route.label ?? "")) {
     return true;
   }
   if (route.children && route.children.length > 0) {
     const enfantsValides = [];
-    route.children.forEach((child: TRoute) => {
+    route.children.forEach((child: TRouteMenu) => {
       if (isRouteValid(child, regex)) {
         enfantsValides.push(child);
       }
@@ -95,9 +42,9 @@ const isRouteValid = (route: TRoute, regex: RegExp) => {
 </script>
 
 <template>
-  <q-drawer v-model="displayDrawer" :mini="miniState && !overHeader && !isWriting" :mini-to-overlay="!overHeader"
+  <q-drawer v-model="drawer" :mini="miniState && !overHeader && !isWriting" :mini-to-overlay="!overHeader"
     noMiniAnimation @mouseenter="miniState = false" @mouseleave="miniState = true"
-    :class="{ 'hide-scrollbar': miniState }" :width="250">
+    :class="{ 'hide-scrollbar': miniState }" :width="260">
     <q-list class="q-pa-md">
       <q-item>
         <q-item-section avatar>

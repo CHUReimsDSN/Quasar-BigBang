@@ -30,11 +30,13 @@ export function setupDefaultProps() {
   const defaultTransitionDuration = 150;
   const transitionShow = "fade";
   const transitionHide = "fade";
+  const expandIcon = "keyboard_arrow_down";
+  const expandIcon2 = "chevron_right";
 
   QLayout.props.view = {
     type: String,
-    default: 'lhh LpR fFf'
-  }
+    default: "lhh LpR fFf",
+  };
 
   QBtn.props.unelevated = {
     type: Boolean,
@@ -66,6 +68,10 @@ export function setupDefaultProps() {
     type: Boolean,
     default: true,
   };
+  QBtnDropdown.props.dropdownIcon = {
+    type: String,
+    default: expandIcon,
+  };
 
   QCard.props.bordered = {
     type: Boolean,
@@ -92,6 +98,18 @@ export function setupDefaultProps() {
   QExpansionItem.props.dense = {
     type: Boolean,
     default: true,
+  };
+  QExpansionItem.props.denseToggle = {
+    type: Boolean,
+    default: false,
+  };
+  QExpansionItem.props.duration = {
+    type: [Number, String],
+    default: defaultTransitionDuration,
+  };
+  QExpansionItem.props.expandIcon = {
+    type: String,
+    default: expandIcon,
   };
 
   QIcon.props.size = {
@@ -161,6 +179,10 @@ export function setupDefaultProps() {
     type: Boolean,
     default: true,
   };
+  QSelect.props.dropdownIcon = {
+    type: String,
+    default: expandIcon,
+  };
 
   QToggle.props.dense = {
     type: Boolean,
@@ -207,6 +229,6 @@ export function setupDefaultProps() {
   };
   QTree.props.icon = {
     type: String,
-    default: "chevron_right",
+    default: expandIcon2,
   };
 }
