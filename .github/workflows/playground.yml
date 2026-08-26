@@ -20,6 +20,7 @@ jobs:
       - name: Install dependencies and build docs
         run: |
           wget -qO- https://get.pnpm.io/install.sh | sh -
+          source $HOME/.bashrc
           cd playground
           pnpm install
           pnpm add -g @quasar/cli
