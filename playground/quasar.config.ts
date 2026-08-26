@@ -34,7 +34,8 @@ export default defineConfig((/* ctx */) => ({
           generateDefaultPropsFile()
         }
       }
-    ]
+    ],
+    publicPath: '/Quasar-BigBang/'
   },
 
   devServer: {
