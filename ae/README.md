@@ -1,4 +1,4 @@
-# Quasar App Extension "big-bang"
+# Quasar Big Bang
 
 _Be sure to change this readme as appropriate for your app extension._
 

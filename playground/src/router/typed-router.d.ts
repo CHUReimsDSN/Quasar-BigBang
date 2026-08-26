@@ -45,9 +45,37 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/ComponentLabelPage': RouteRecordInfo<
+      '/ComponentLabelPage',
+      '/ComponentLabelPage',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/ComponentThemePickerPage': RouteRecordInfo<
+      '/ComponentThemePickerPage',
+      '/ComponentThemePickerPage',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/ComponentTimePickerPage': RouteRecordInfo<
+      '/ComponentTimePickerPage',
+      '/ComponentTimePickerPage',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/DefaultPropsPage': RouteRecordInfo<
       '/DefaultPropsPage',
       '/DefaultPropsPage',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/EditThemePage': RouteRecordInfo<
+      '/EditThemePage',
+      '/EditThemePage',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -130,9 +158,41 @@ declare module 'vue-router/auto-routes' {
       pathParamNames:
         | never
     }
+    'src/pages/ComponentLabelPage.vue': {
+      routes:
+        | '/ComponentLabelPage'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/ComponentThemePickerPage.vue': {
+      routes:
+        | '/ComponentThemePickerPage'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/ComponentTimePickerPage.vue': {
+      routes:
+        | '/ComponentTimePickerPage'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
     'src/pages/DefaultPropsPage.vue': {
       routes:
         | '/DefaultPropsPage'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/EditThemePage.vue': {
+      routes:
+        | '/EditThemePage'
       views:
         | never
       pathParamNames:

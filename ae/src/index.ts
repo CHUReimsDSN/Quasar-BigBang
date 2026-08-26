@@ -13,9 +13,6 @@ export default defineIndexScript(api => {
     boot: ["~quasar-app-extension-big-bang/src/runtime/boot.register.ts"],
   }));
   api.extendQuasarConf((conf) => {
-    if (conf.framework?.plugins?.includes('Notify')) {
-      conf.boot?.push("~quasar-app-extension-big-bang/src/runtime/boot.notify.ts")
-    }
     if (conf.framework?.config) {
       conf.framework.config.ripple = false
     }

@@ -1,6 +1,10 @@
 import BigBangApiPage from "@/pages/BigBangApiPage.vue";
 import ChangelogPage from "@/pages/ChangelogPage.vue";
+import ComponentLabelPage from "@/pages/ComponentLabelPage.vue";
+import ComponentThemePickerPage from "@/pages/ComponentThemePickerPage.vue";
+import ComponentTimePage from "@/pages/ComponentTimePickerPage.vue";
 import DefaultPropsPage from "@/pages/DefaultPropsPage.vue";
+import EditThemePage from "@/pages/EditThemePage.vue";
 import Error404Page from "@/pages/errors/Error404Page.vue";
 import HelpQuasarPage from "@/pages/HelpQuasarPage.vue";
 import HomePage from "@/pages/HomePage.vue";
@@ -26,6 +30,11 @@ const routes: RouteRecordRaw[] = [
     name: "kitchen-sink",
     component: KitchenSinkPage,
   },
+    {
+    path: "/edit-theme",
+    name: "edit-theme",
+    component: EditThemePage,
+  },
   {
     path: "/default-props",
     name: "default-props",
@@ -41,6 +50,23 @@ const routes: RouteRecordRaw[] = [
     name: "utils-snippets",
     component: UtilSnippetsPage,
   },
+
+  {
+    path: "/qbb-theme-picker",
+    name: "qbb-theme-picker",
+    component: ComponentThemePickerPage,
+  },
+    {
+    path: "/qbb-time",
+    name: "qbb-time",
+    component: ComponentTimePage,
+  },
+    {
+    path: "/qbb-label",
+    name: "qbb-label",
+    component: ComponentLabelPage,
+  },
+
   {
     path: "/changelog",
     name: "changelog",

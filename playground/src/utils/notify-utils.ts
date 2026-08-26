@@ -1,11 +1,4 @@
-<script setup lang="ts">
-import CodeContainer from '@/components/CodeContainer.vue';
-import PageSection from '@/components/PageSection.vue';
-import TodoBanner from '@/components/TodoBanner.vue';
-import PageLayout from '@/layout/PageLayout.vue';
-
-// consts
-const codeNotifyUtils = `import { Notify } from "quasar";
+import { Notify } from "quasar";
 
 Notify.setDefaults({
   position: "top-right",
@@ -65,14 +58,3 @@ export const NotifyUtils = {
   info,
   secondary,
 };
-`
-</script>
-
-<template>
-    <PageLayout title="Snippets">
-        <TodoBanner />
-        <PageSection subtitle="Notify utils">
-            <CodeContainer :code="codeNotifyUtils" lang="ts" />
-        </PageSection>
-    </PageLayout>
-</template>

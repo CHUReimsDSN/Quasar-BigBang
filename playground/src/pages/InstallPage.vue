@@ -4,11 +4,11 @@ import PageSection from '@/components/PageSection.vue';
 import PageLayout from '@/layout/PageLayout.vue';
 
 // const
-const commandInstall = 'quasar ext add TODO'
-const commandAddStyleVariable = `// inside src/css/quasar.variables.scss
+const commandInstall = 'quasar ext add big-bang'
+const commandAddStyleVariable = `// src/css/quasar.variables.scss
 @import 'quasar-app-extension-big-bang/src/css/big-bang-variables.scss';
 `
-const commandAddStyle = `// inside src/css/app.scss
+const commandAddStyle = `// src/css/app.scss
 @import 'quasar-app-extension-big-bang/src/css/big-bang.sass';
 `
 </script>

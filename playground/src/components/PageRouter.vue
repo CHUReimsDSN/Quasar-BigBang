@@ -12,13 +12,17 @@ const nextRoute = ref<TRouteMenu | null>(null)
 
 // functions
 function setupNextAndPreviousRoute() {
-    const flatCallback = (menuList: TRouteMenu[]) => {
+    const flatCallback = (menuList: TRouteMenu[], parentLabel?: string) => {
         return menuList.reduce((acc, routeMenu) => {
+            const copyRouteMenu = JSON.parse(JSON.stringify(routeMenu)) as TRouteMenu
             if (routeMenu.to) {
-                acc.push(routeMenu)
+                if (parentLabel && copyRouteMenu.label) {
+                    copyRouteMenu.label = `${parentLabel} : ${copyRouteMenu.label}`
+                }
+                acc.push(copyRouteMenu)
             }
-            if (routeMenu.children) {
-                acc = acc.concat(flatCallback(routeMenu.children))
+            if (copyRouteMenu.children) {
+                acc = acc.concat(flatCallback(copyRouteMenu.children, copyRouteMenu.label))
             }
             return acc
         }, <TRouteMenu[]>[])

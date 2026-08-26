@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { nextTick, onMounted, ref } from "vue";
-import { Notify } from "quasar";
 import DynamicCard from "@/components/DynamicCard.vue";
 import DynamicFormLabel from "@/components/DynamicFormLabel.vue";
 import PageLayout from "@/layout/PageLayout.vue";
 import PageSection from "@/components/PageSection.vue";
+import { NotifyUtils } from "@/utils/notify-utils";
 
 // consts
 const bindContainer = {
@@ -329,18 +329,18 @@ onMounted(() => {
       <DynamicCard v-model="showCard">
         <div v-bind="bindContainer">
           <q-btn label="Success" color="secondary" @click="
-            Notify.positive('Vos modifications ont été enregistrées.')
+            NotifyUtils.positive('Lorem ipsum dolor sit consectetur.',)
             " />
           <q-btn label="Error" color="secondary" @click="
-            Notify.negative('Nous n\'avons pas pu effectuer l\'action.')
+            NotifyUtils.negative('Lorem ipsum dolor sit consectetur.',)
             " />
           <q-btn label="Warning" color="secondary" @click="
-            Notify.warning(
-              'Certains champs ont besoin de votre attention.',
+            NotifyUtils.warning(
+              'Lorem ipsum dolor sit amet.',
             )
             " />
-          <q-btn label="Info" color="secondary" @click="Notify.info('Vous avez 4 nouveaux messages.')" />
-          <q-btn label="Secondary" color="secondary" @click="Notify.secondary('Vous avez 4 nouveaux messages.')" />
+          <q-btn label="Info" color="secondary" @click="NotifyUtils.info('Lorem ipsum consectetur.')" />
+          <q-btn label="Secondary" color="secondary" @click="NotifyUtils.secondary('Lorem ipsum dolor sit amet, consectetur.')" />
         </div>
       </DynamicCard>
     </PageSection>

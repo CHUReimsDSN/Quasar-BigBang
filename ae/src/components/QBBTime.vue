@@ -8,7 +8,7 @@ const propsComponent = withDefaults(
     mask: string;
   }>(),
   {
-    mask: "YYYY/MM/DD HH:mm",
+    mask: "HH:mm",
   },
 );
 
@@ -73,6 +73,9 @@ const minutes = computed(() => {
   return parseInt(timeComp.value.split(separator).at(-1) ?? "0");
 });
 const dateComp = computed(() => {
+  if (!propsComponent.mask.includes(dateSeparator)) {
+    return ''
+  }
   const value = model.value.split(dateSeparator).at(0);
   if (value === '') {
     return date.formatDate(new Date(), propsComponent.mask).split(dateSeparator).at(0);

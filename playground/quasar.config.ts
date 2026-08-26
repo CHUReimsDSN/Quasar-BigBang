@@ -1,6 +1,7 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file
 
 import { defineConfig } from "#q-app";
+import { generateDefaultPropsFile } from "./generator/default-props-generator";
 
 export default defineConfig((/* ctx */) => ({
   boot: [],
@@ -26,6 +27,14 @@ export default defineConfig((/* ctx */) => ({
       strict: true,
       vueShim: true,
     },
+    vitePlugins: [
+      {
+        name: 'generate-default-props-doc-file',
+        buildStart() {
+          generateDefaultPropsFile()
+        }
+      }
+    ]
   },
 
   devServer: {

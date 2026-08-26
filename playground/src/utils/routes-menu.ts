@@ -23,6 +23,11 @@ export const appRouteMenuItems: TRouteMenu[] = [
     to: { name: "kitchen-sink" },
   },
   {
+    label: 'Edit theme',
+    icon: 'style',
+    to: { name: 'edit-theme'}
+  },
+  {
     label: "Default props",
     icon: "settings",
     to: { name: "default-props" },
@@ -30,15 +35,31 @@ export const appRouteMenuItems: TRouteMenu[] = [
   {
     label: "Components",
     icon: "dashboard",
-    children: [],
+    children: [
+      {
+        label: 'Theme picker',
+        icon: 'colorize',
+        to: { name: 'qbb-theme-picker'}
+      },
+            {
+        label: 'Time',
+        icon: 'access_time',
+        to: { name: 'qbb-time'}
+      },
+          {
+        label: 'Label',
+        icon: 'label',
+        to: { name: 'qbb-label'}
+      }
+    ],
   },
   {
     label: "Utils",
     icon: "build",
     children: [
       {
-        label: "CSS classes",
-        icon: "style",
+        label: "Added CSS classes",
+        icon: "add",
         to: { name: "utils-css-classes" },
       },
       {

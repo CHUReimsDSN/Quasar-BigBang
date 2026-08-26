@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // props
 const propsComponent = defineProps<{
-    type: 'positive' | 'negative' | 'warning' | 'info';
+    type: 'positive' | 'negative' | 'warning' | 'info' | 'secondary';
 }>()
 
 // functions
@@ -13,7 +13,8 @@ function getIconByType() {
         'info': 'info',
         'negative': 'cancel',
         'positive': 'check',
-        'warning': 'warning'
+        'warning': 'warning',
+        'secondary': 'info'
     }
     return iconByTypes[propsComponent.type]
 }

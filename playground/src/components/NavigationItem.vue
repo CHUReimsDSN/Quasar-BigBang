@@ -49,7 +49,7 @@ const isRouteValid = (route: TRouteMenu, regex: RegExp) => {
         :route="childRoute" />
     </q-expansion-item>
 
-    <q-item v-else clickable activeClass="active-menu-item" :active="route.active" class="menu-item" :to="route.to">
+    <q-item v-else clickable activeClass="menu-item-active" :active="route.active" class="menu-item" :to="route.to">
       <q-item-section v-if="route.icon" avatar>
         <q-icon :name="route.icon" />
       </q-item-section>
