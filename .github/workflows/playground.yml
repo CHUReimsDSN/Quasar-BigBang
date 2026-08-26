@@ -10,27 +10,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24.13.0'
+      - uses: actions/checkout@v4
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '26.7.0'
+
       - name: Install dependencies and build docs
         run: |
           cd playground
           pnpm install
-          pnpm add -g @quasar/cli
-          quasar b
+          pnpm exec quasar b
 
       - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: playground/dist
 
