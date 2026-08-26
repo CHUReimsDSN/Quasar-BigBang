@@ -17,10 +17,13 @@ jobs:
         with:
           node-version: '24.13.0'
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Install dependencies and build docs
         run: |
-          wget -qO- https://get.pnpm.io/install.sh | sh -
-          source /home/runner/.bashrc
           cd playground
           pnpm install
           pnpm add -g @quasar/cli
