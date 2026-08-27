@@ -8,13 +8,33 @@
 import { defineIndexScript } from "#q-app";
 
 // can be async
-export default defineIndexScript(api => {
+export default defineIndexScript((api) => {
   api.extendQuasarConf(() => ({
     boot: ["~quasar-app-extension-big-bang/src/runtime/boot.register.ts"],
   }));
   api.extendQuasarConf((conf) => {
     if (conf.framework?.config) {
-      conf.framework.config.ripple = false
+      conf.framework.config.ripple = false;
     }
-  })
+  });
+  const registerDescrApiByLabel = (label: string) => {
+    api.registerDescribeApi(label, `./generated/components/${label}.json`);
+  };
+  registerDescrApiByLabel("QBBThemePicker");
+  registerDescrApiByLabel("QBBLabel");
+  registerDescrApiByLabel("QBBTime");
 });
+
+export { bigBangThemeKey } from "./core/inject-key";
+export type { BigBangTheme } from "./core/big-bang-theme";
+export {
+  type TPrimaryLabel,
+  type TPrimaryEntry,
+  primaries,
+} from "./core/primary";
+export {
+  type TSurfaceLabel,
+  type TSurfaceEntry,
+  surfaces,
+} from "./core/surface";
+export type { TSaveStrategy } from "./core/saver";

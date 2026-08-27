@@ -14,34 +14,20 @@ const tooltipRef = ref<InstanceType<typeof TooltipNotify>>();
 
 // functions
 function copyAnchor() {
-  navigator.clipboard.writeText(document.URL + "#" + propsComponent.subtitle);
+  navigator.clipboard.writeText(document.URL.split('#').at(0) + "#" + propsComponent.subtitle);
   tooltipRef.value?.notify();
 }
 </script>
 
 <template>
   <div class="flex column q-pb-xl q-mb-sm">
-    <div
-      v-if="propsComponent.subtitle"
-      class="flex row no-wrap items-center"
-      @mouseenter="showAnchorBtn = true"
-      @mouseleave="showAnchorBtn = false"
-    >
-      <h4 :id="propsComponent.subtitle">
+    <div v-if="propsComponent.subtitle" class="flex row no-wrap items-center" @mouseenter="showAnchorBtn = true"
+      @mouseleave="showAnchorBtn = false">
+      <h3 :id="propsComponent.subtitle" class="page-section">
         {{ propsComponent.subtitle }}
-      </h4>
-      <transition
-        appear
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-        :duration="150"
-      >
-        <q-btn
-          v-show="showAnchorBtn"
-          label="#"
-          class="no-focus-helper"
-          @click="copyAnchor()"
-        >
+      </h3>
+      <transition appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" :duration="150">
+        <q-btn v-show="showAnchorBtn" label="#" class="no-focus-helper" @click="copyAnchor()">
           <TooltipNotify ref="tooltipRef" message="Copied!" />
         </q-btn>
       </transition>

@@ -19,5 +19,6 @@ allowBuilds:
   electron-winstaller: true
   esbuild: true
   lightningcss: true
+  node: true
   rolldown: true
   unrs-resolver: true

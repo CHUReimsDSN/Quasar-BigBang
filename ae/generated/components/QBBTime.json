@@ -1,0 +1,18 @@
+{
+  "type": "component",
+  "props": {
+    "mask": {
+      "type": "String",
+      "desc": "Mask (formatting string) used for parsing and formatting value",
+      "category": "model",
+      "examples": [
+        "'HH:mm'",
+        "'HHhmm'"
+      ],
+      "default": "HH:mm"
+    }
+  },
+  "events": {},
+  "slots": {},
+  "methods": {}
+}

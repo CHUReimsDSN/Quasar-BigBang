@@ -4,6 +4,6 @@ import Banner from './Banner.vue';
 
 <template>
     <Banner type="negative">
-        This section is incomplete and is likely to changed.
+        This section is incomplete and is likely to change.
     </Banner>
 </template>

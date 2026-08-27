@@ -1,53 +1,64 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { primaries, type TPrimaryLabel } from "../core/primary";
-import { BigBang } from "../core/big-bang";
-import { surfaces, TSurfaceLabel } from "../core/surface";
+import { surfaces, type TSurfaceLabel } from "../core/surface";
+import { inject } from 'vue'
+import { bigBangThemeKey } from "../core/inject-key";
+
+// consts
+const bigBangTheme = inject(bigBangThemeKey)!
 
 // refs
-const selectedPrimary = ref(BigBang.getPrimary());
-const selectedSurface = ref(BigBang.getSurface());
+const selectedPrimary = ref(bigBangTheme.getPrimary());
+const selectedSurface = ref(bigBangTheme.getSurface());
 
 // functions
+/**
+ * Set Primary color
+ * 
+ * @param label The primary label
+ */
 function setPrimary(label: TPrimaryLabel) {
-  BigBang.setPrimary(label);
+  bigBangTheme.setPrimary(label);
   selectedPrimary.value = label;
 }
+
+/**
+ * Set Surface color
+ * 
+ * @param label The surface label
+ */
 function setSurface(label: TSurfaceLabel) {
-  BigBang.setSurface(label);
+  bigBangTheme.setSurface(label);
   selectedSurface.value = label;
 }
+
+// exposes
+defineExpose({
+  setPrimary,
+  setSurface
+})
 </script>
 
 <template>
   <div class="theme-preview-container">
     <div class="flex column">
       <div class="flex column q-gutter-y-sm">
-        <div class="text-h4 text-grey">Primary</div>
+        <div class="text-body1">Primary</div>
         <div class="flex row items-center">
-          <div
-            v-for="primary of primaries"
-            :key="primary[0]"
-            :class="`theme-selector ${selectedPrimary === primary[0] ? 'theme-selector-active' : ''}`"
-            name="circle"
-            :style="`background: ${primary[1].reference}`"
-            @click="setPrimary(primary[0])"
-          >
+          <div v-for="primary of primaries" :key="primary[0]"
+            :class="`theme-selector ${selectedPrimary === primary[0] ? 'theme-selector-active' : ''}`" name="circle"
+            :style="`background: ${primary[1].reference}`" @click="setPrimary(primary[0])">
             <q-tooltip>{{ primary[0] }}</q-tooltip>
           </div>
         </div>
       </div>
-      <div class="flex column q-gutter-y-sm q-pt-lg">
-        <div class="text-h4 text-grey">Surface</div>
+      <div class="flex column q-gutter-y-sm q-pt-md">
+        <div class="text-body1">Surface</div>
         <div class="flex row items-center">
-          <div
-            v-for="surface of surfaces"
-            :key="surface[0]"
-            :class="`theme-selector ${selectedSurface === surface[0] ? 'theme-selector-active' : ''}`"
-            name="circle"
-            :style="`background: ${surface[1].reference}`"
-            @click="setSurface(surface[0])"
-          >
+          <div v-for="surface of surfaces" :key="surface[0]"
+            :class="`theme-selector ${selectedSurface === surface[0] ? 'theme-selector-active' : ''}`" name="circle"
+            :style="`background: ${surface[1].reference}`" @click="setSurface(surface[0])">
             <q-tooltip>{{ surface[0] }}</q-tooltip>
           </div>
         </div>

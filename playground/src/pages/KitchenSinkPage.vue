@@ -340,7 +340,8 @@ onMounted(() => {
             )
             " />
           <q-btn label="Info" color="secondary" @click="NotifyUtils.info('Lorem ipsum consectetur.')" />
-          <q-btn label="Secondary" color="secondary" @click="NotifyUtils.secondary('Lorem ipsum dolor sit amet, consectetur.')" />
+          <q-btn label="Secondary" color="secondary"
+            @click="NotifyUtils.secondary('Lorem ipsum dolor sit amet, consectetur.')" />
         </div>
       </DynamicCard>
     </PageSection>

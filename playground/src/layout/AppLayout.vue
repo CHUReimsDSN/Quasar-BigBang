@@ -14,7 +14,7 @@ const drawer = ref(true)
 <template>
     <q-layout>
         <q-header>
-            <q-toolbar class="GPL__toolbar" style="height: 54px">
+            <q-toolbar class="GPL__toolbar app-layout-toolbar">
                 <div class="flex row items-center justify-between full-width">
                     <div class="flex row items-center">
                         <q-btn v-if="$q.screen.lt.md" @click="drawer = !drawer" icon="menu" />
@@ -47,3 +47,9 @@ const drawer = ref(true)
         </q-page-container>
     </q-layout>
 </template>
+
+<style lang="scss">
+.app-layout-toolbar {
+    height: 54px;
+}
+</style>

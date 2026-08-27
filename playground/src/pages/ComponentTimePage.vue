@@ -4,6 +4,7 @@ import PageSection from "@/components/PageSection.vue";
 import TodoBanner from "@/components/TodoBanner.vue";
 import PageLayout from "@/layout/PageLayout.vue";
 import { ref } from "vue";
+import jsonApi from '@/../../ae/generated/components/QBBTime.json'
 
 // consts
 const usageCode = `<qbb-time />`;

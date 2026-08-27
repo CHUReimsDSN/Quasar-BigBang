@@ -6,7 +6,7 @@ const router = useRouter();
 
 // functions
 function redirectToDashboard() {
-    void router.push({ name: 'root' });
+    void router.push({ name: 'home' });
 }
 </script>
 

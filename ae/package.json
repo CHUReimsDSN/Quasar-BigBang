@@ -2,6 +2,9 @@
   "name": "quasar-app-extension-big-bang",
   "version": "0.0.1",
   "description": "Alternate theme for Quasar app",
+  "scripts": {
+    "prepack": "tsx src/scripts/prepack.ts"
+  },
   "keywords": [
     "quasar",
     "quasar-app-extension",
@@ -22,7 +25,11 @@
   },
   "devDependencies": {
     "@quasar/app-vite": "catalog:",
+    "@types/node": "^22.20.1",
+    "@vue/compiler-sfc": "^3.5.41",
     "quasar": "catalog:",
+    "tsx": "^4.23.12",
+    "typescript": "^6.0.3",
     "vue": "catalog:"
   },
   "peerDependencies": {

@@ -5,6 +5,14 @@ import { computed } from "vue";
 // props
 const propsComponent = withDefaults(
   defineProps<{
+    /**
+     * Mask (formatting string) used for parsing and formatting value
+     * 
+     * @category model
+     * @default "HH:mm"
+     * @example 'HH:mm'
+     * @example 'HHhmm'
+     */
     mask: string;
   }>(),
   {
@@ -13,8 +21,8 @@ const propsComponent = withDefaults(
 );
 
 // consts
-const separator = ":";
-const dateSeparator = " ";
+const separator = ":"; // TODO
+const dateSeparator = " "; // TODO
 const bindButton = {
   class: "no-padding",
 };
@@ -98,11 +106,7 @@ const timeComp = computed(() => {
     <div class="flex column flex-center">
       <q-btn icon="keyboard_arrow_up" v-bind="bindButton" @click="incrMinute" />
       <div>{{ format(minutes) }}</div>
-      <q-btn
-        icon="keyboard_arrow_down"
-        v-bind="bindButton"
-        @click="decrMinute"
-      />
+      <q-btn icon="keyboard_arrow_down" v-bind="bindButton" @click="decrMinute" />
     </div>
   </div>
 </template>

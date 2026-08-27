@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { appRouteMenuItems, type TRouteMenu } from '@/utils/routes-menu';
+import { flattenRoutesMenu, type TRouteMenu } from '@/utils/routes-menu';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -12,36 +12,20 @@ const nextRoute = ref<TRouteMenu | null>(null)
 
 // functions
 function setupNextAndPreviousRoute() {
-    const flatCallback = (menuList: TRouteMenu[], parentLabel?: string) => {
-        return menuList.reduce((acc, routeMenu) => {
-            const copyRouteMenu = JSON.parse(JSON.stringify(routeMenu)) as TRouteMenu
-            if (routeMenu.to) {
-                if (parentLabel && copyRouteMenu.label) {
-                    copyRouteMenu.label = `${parentLabel} : ${copyRouteMenu.label}`
-                }
-                acc.push(copyRouteMenu)
-            }
-            if (copyRouteMenu.children) {
-                acc = acc.concat(flatCallback(copyRouteMenu.children, copyRouteMenu.label))
-            }
-            return acc
-        }, <TRouteMenu[]>[])
-    }
-    const flattenRouteMenu = flatCallback(appRouteMenuItems)
-    const index = flattenRouteMenu.findIndex((routeMenu) => {
+    const index = flattenRoutesMenu.findIndex((routeMenu) => {
         return routeMenu.to?.name === route.name
     })
     if (index === -1) {
         return
     }
     if (index - 1 > -1) {
-        const previousRouteFound = flattenRouteMenu.at(index - 1)
+        const previousRouteFound = flattenRoutesMenu.at(index - 1)
         if (previousRouteFound) {
             previousRoute.value = previousRouteFound
         }
     }
-    if (index + 1 < flattenRouteMenu.length + 1) {
-        const nextRouteFound = flattenRouteMenu.at(index + 1)
+    if (index + 1 < flattenRoutesMenu.length + 1) {
+        const nextRouteFound = flattenRoutesMenu.at(index + 1)
         if (nextRouteFound) {
             nextRoute.value = nextRouteFound
         }
@@ -57,8 +41,9 @@ onMounted(() => {
 <template>
     <div class="flex row items-center q-gutter-md">
         <q-btn v-if="previousRoute && previousRoute.to" :to="{ name: previousRoute.to.name }"
-            :label="previousRoute.label" icon="chevron_left" color="secondary" />
-        <q-btn v-if="nextRoute && nextRoute.to" :to="{ name: nextRoute.to.name }" :label="nextRoute.label"
-            color="secondary" icon-right="chevron_right" />
+            :label="`${previousRoute.prefixLabel ?? ''} ${previousRoute.label}`" icon="chevron_left"
+            color="secondary" />
+        <q-btn v-if="nextRoute && nextRoute.to" :to="{ name: nextRoute.to.name }"
+            :label="`${nextRoute.prefixLabel ?? ''} ${nextRoute.label}`" color="secondary" icon-right="chevron_right" />
     </div>
 </template>

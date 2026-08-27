@@ -3,6 +3,7 @@ import CodeContainer from "@/components/CodeContainer.vue";
 import PageSection from "@/components/PageSection.vue";
 import TodoBanner from "@/components/TodoBanner.vue";
 import PageLayout from "@/layout/PageLayout.vue";
+import jsonApi from '@/../../ae/generated/components/QBBThemePicker.json'
 
 // consts
 const usageCode = `<qbb-theme-picker />`;

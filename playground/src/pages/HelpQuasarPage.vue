@@ -10,7 +10,7 @@ import PageLayout from '@/layout/PageLayout.vue';
             <div>
                 If you appreciate the work that went into this, please consider donating to Quasar.
             </div>
-            <q-btn href="https://donate.quasar.dev" target="_blank" color="info" class="q-mt-md"
+            <q-btn href="https://donate.quasar.dev" target="_blank" color="primary" icon="favorite" class="q-mt-md"
                 label="Donate to Quasar" />
         </PageSection>
     </PageLayout>

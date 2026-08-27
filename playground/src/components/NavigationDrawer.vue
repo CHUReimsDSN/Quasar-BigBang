@@ -9,7 +9,7 @@ const miniState = ref(true);
 const overHeader = ref(true);
 const searchedRoute = ref<string>();
 const isWriting = ref(false);
-const routes = ref<TRouteMenu[]>(appRouteMenuItems);
+const routes = ref<Readonly<TRouteMenu[]>>(appRouteMenuItems);
 
 // Computeds
 const navRoutes = computed(() => {
@@ -44,7 +44,7 @@ const isRouteValid = (route: TRouteMenu, regex: RegExp) => {
 <template>
   <q-drawer v-model="drawer" :mini="miniState && !overHeader && !isWriting" :mini-to-overlay="!overHeader"
     noMiniAnimation @mouseenter="miniState = false" @mouseleave="miniState = true"
-    :class="{ 'hide-scrollbar': miniState }" :width="260">
+    :class="{ 'hide-scrollbar': miniState }" :width="240">
     <q-list class="q-pa-md">
       <q-item>
         <q-item-section avatar>

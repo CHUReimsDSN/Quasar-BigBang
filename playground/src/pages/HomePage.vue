@@ -29,12 +29,16 @@ import PageLayout from '@/layout/PageLayout.vue';
       <div>This means that overriding or changing the props/styles that don't fit your needs will <b>still work</b>.
       </div>
       <div>Install the extension, imports the stylesheets and you're good to go.</div>
-      <Banner type="info" style="max-width: 600px">
+      <Banner type="secondary" style="max-width: 600px">
         <div>
           If you add this extension to an existing app, you may want to remove some of the
           already-set props to benefit from the theme's styling.
         </div>
       </Banner>
+    </PageSection>
+
+    <PageSection subtitle="Which version of Quasar is this based of?">
+      <div>{{ $q.version }}</div>
     </PageSection>
 
     <PageSection subtitle="Any dependency in the layer?">

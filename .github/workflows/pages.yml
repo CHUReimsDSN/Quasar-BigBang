@@ -22,10 +22,18 @@ jobs:
         with:
           node-version: '26.7.0'
 
+      - name: Install workspace dependencies
+        run: |
+          pnpm install
+
+      - name: Prepack extension
+        run: |
+          cd ae
+          pnpm run prepack
+
       - name: Install dependencies and build playground
         run: |
           cd playground
-          pnpm install
           pnpm exec quasar b
 
       - name: Upload Artifact

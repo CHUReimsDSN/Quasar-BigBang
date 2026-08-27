@@ -48,7 +48,9 @@ onMounted(() => {
 
 <template>
   <div class="code-container">
-    <div v-html="htmlCode" />
+    <div class="code-container-shiki">
+      <div v-html="htmlCode" />
+    </div>
     <div class="code-copy-container">
       <q-btn @click="copyCodeToClipboard" class="code-copy-btn">
         <q-icon size="1rem" name="content_copy" color="secondary" />
@@ -64,6 +66,7 @@ onMounted(() => {
     display: flex
     border: 1px solid var(--field-border-color)
     border-radius: 6px
+    margin: 4px 0px
 
 .code-copy-container
   position: absolute

@@ -35,7 +35,7 @@ export function setupDefaultProps() {
 
   QLayout.props.view = {
     type: String,
-    default: "lhh LpR fFf",
+    default: "lHh LpR fFf",
   };
 
   QBtn.props.unelevated = {
