@@ -5,7 +5,7 @@ packages:
   - playground
 
 linkWorkspacePackages: true
-publishBranch: dev
+publishBranch: main
 
 catalog:
   "@quasar/app-vite": "^3.7.0"
