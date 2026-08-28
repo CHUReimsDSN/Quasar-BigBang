@@ -7,6 +7,7 @@ import PageLayout from '@/layout/PageLayout.vue';
 const commandInstall = 'quasar ext add big-bang'
 const commandAddStyleVariable = `// src/css/quasar.variables.scss
 @import 'quasar-app-extension-big-bang/src/css/big-bang-variables.scss';
+// you may want to delete the default variables as well or put the import after
 `
 const commandAddStyle = `// src/css/app.scss
 @import 'quasar-app-extension-big-bang/src/css/big-bang.sass';

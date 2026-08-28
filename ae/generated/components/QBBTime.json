@@ -10,6 +10,18 @@
         "'HHhmm'"
       ],
       "default": "HH:mm"
+    },
+    "'model-value'": {
+      "type": [
+        "String",
+        "Any"
+      ],
+      "desc": "Time of the component",
+      "category": "model",
+      "examples": [
+        "v-model=\"myDate\""
+      ],
+      "default": null
     }
   },
   "events": {},

@@ -56,6 +56,4 @@ export declare class BigBangTheme {
      * Get the current save strategy
      */
     getSaveMode(): TSaveStrategy;
-    private updatePrimaryCss;
-    private updateSurfaceCss;
 }

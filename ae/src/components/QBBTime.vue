@@ -13,10 +13,20 @@ const propsComponent = withDefaults(
      * @example 'HH:mm'
      * @example 'HHhmm'
      */
-    mask: string;
+    mask?: string;
+
+    /**
+     * Time of the component
+     * 
+     * @category model
+     * @default null
+     * @example v-model="myDate"
+     */
+    'model-value': string | null;
   }>(),
   {
     mask: "HH:mm",
+    "model-value": null
   },
 );
 

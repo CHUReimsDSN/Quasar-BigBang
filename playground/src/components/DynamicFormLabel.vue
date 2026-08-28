@@ -20,7 +20,7 @@ const computedProps = computed(() => {
 <template>
     <div class="flex column">
         <template v-if="showLabel">
-            <qbb-label :label="propsComponent.label" />
+            <qbb-label :name="propsComponent.label" />
         </template>
         <slot name="props" v-bind="computedProps" />
     </div>

@@ -29,13 +29,16 @@ body // ✅
 
 .q-drawer // ✅
   background: var(--drawer-background)
+  &--bordered
+    border: none
+    border-color: var(--border-color) !important
 
 .q-header // ✅
   background: var(--header-background)
   color: var(--text-color)
   &--bordered
     border: none
-    border-bottom: 1px solid var(--border-color)
+    border-bottom: 1px solid var(--border-color) !important
 
 .q-dialog // ✅
   &__backdrop
@@ -97,7 +100,6 @@ body // ✅
 .q-tab // ✅
   padding: 0 14px
   padding-top: 8px
-  border-bottom: 1px solid var(--field-border-color-hover)
   transition-duration: 0.2s
   &--full
     min-height: 1px
@@ -112,6 +114,8 @@ body // ✅
   &__indicator
     height: 1px
     transition-duration: 0.1s !important
+    .q-tab__indicator
+      width: 1px
   &__label
     font-size: 0.875rem
   &__content
@@ -135,6 +139,15 @@ body // ✅
     justify-content: unset
   &__content--align-justify
     flex: unset !important
+  .q-tab
+    border-bottom: 1px solid var(--field-border-color-hover)
+  &--vertical
+    border-right: 1px solid var(--field-border-color-hover)
+    .q-tab
+      border-bottom: none
+    .q-tab__indicator
+      width: 1px
+
 
 .q-checkbox // ✅
   &__inner
@@ -424,7 +437,7 @@ body // ✅
   &--bordered
     box-shadow: none
     border: 1px solid var(--card-border-color)
-    border-radius: 12px
+    border-radius: 8px
 
 .q-uploader // ✅
   box-shadow: none

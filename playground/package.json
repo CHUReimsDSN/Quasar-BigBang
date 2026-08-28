@@ -2,7 +2,7 @@
   "name": "playground",
   "version": "0.0.1",
   "private": true,
-  "description": "Quasar Big Bang Playground",
+  "description": "Quasar Big Bang",
   "author": "JulesDebeaumont <deb.jules@outlook.fr>",
   "type": "module",
   "scripts": {

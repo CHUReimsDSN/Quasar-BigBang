@@ -38,3 +38,8 @@ export {
   surfaces,
 } from "./core/surface";
 export type { TSaveStrategy } from "./core/saver";
+export type {
+  TComponentApi,
+  TPropDefinition,
+  TMethodDefinition,
+} from "./scripts/generate-components-json";

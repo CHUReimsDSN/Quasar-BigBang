@@ -4,7 +4,7 @@ import ts from "typescript";
 import { parse } from "@vue/compiler-sfc";
 import { getJsDoc, getType, parseDefaultJsDoc } from "./ast-utils";
 
-type TComponentApi = {
+export type TComponentApi = {
   type: "component";
   props: Record<string, TPropDefinition>;
   events: Record<string, unknown>;
@@ -12,18 +12,17 @@ type TComponentApi = {
   methods: Record<string, TMethodDefinition>;
 };
 
-type TPropDefinition = {
+export type TPropDefinition = {
   type: string | string[];
   desc?: string;
   default?: unknown;
   examples?: unknown[];
   category?: string;
-  definition?: Record<string, TPropDefinition>;
   params?: Record<string, TPropDefinition>;
   returns?: TPropDefinition | null;
 };
 
-type TMethodDefinition = {
+export type TMethodDefinition = {
   desc?: string;
   params?: Record<
     string,
@@ -33,6 +32,11 @@ type TMethodDefinition = {
       examples?: string[];
     }
   >;
+  returns?: {
+    type: string;
+    desc?: string;
+    examples?: string[];
+  }
 };
 
 export function generateComponentsJson() {
@@ -52,7 +56,7 @@ export function generateComponentsJson() {
     sourceFile: ts.SourceFile,
   ): TPropDefinition => {
     const result: TPropDefinition = {
-      type: node.type ? getType(node.type, sourceFile) : "Any",
+      type: node.type ? getType(node.type, sourceFile) : "Unknown",
     };
     const jsDoc = getJsDoc(node, sourceFile);
     if (jsDoc) {

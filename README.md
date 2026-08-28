@@ -1,1 +1,1 @@
-[DOCUMENTATION](https://chureimsdsn.github.io/Quasar-BigBang/home)
+[DOCUMENTATION](https://chureimsdsn.github.io/Quasar-BigBang)
