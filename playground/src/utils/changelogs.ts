@@ -7,6 +7,11 @@ export type TChanglog = {
 
 export const changelogs = <TChanglog[]>[
   {
+    version: "0.0.3",
+    date: "2026/08/28",
+    changes: ["Fixing inject provide key for BigBangTheme"],
+  },
+  {
     version: "0.0.2",
     date: "2026/08/28",
     changes: ["Documentation with JSON API"],
