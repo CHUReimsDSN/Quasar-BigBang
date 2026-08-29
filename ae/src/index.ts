@@ -25,8 +25,7 @@ export default defineIndexScript((api) => {
   registerDescrApiByLabel("QBBTime");
 });
 
-export { bigBangThemeKey } from "./core/inject-key";
-export type { BigBangTheme } from "./core/big-bang-theme";
+export { BigBangTheme } from "./core/big-bang-theme";
 export {
   type TPrimaryLabel,
   type TPrimaryEntry,

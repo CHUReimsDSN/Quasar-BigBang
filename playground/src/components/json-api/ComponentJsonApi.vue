@@ -66,7 +66,7 @@ function formatMethodType(def: TMethodDefinition) {
 }
 function propDefToEntry(def: TPropDefEntry): TEntryItem {
   return {
-    label: def.label,
+    label: def.label.replaceAll("'", ''),
     type: Array.isArray(def.type) ? def.type.join(" | ") : def.type,
     desc: def.desc,
     default: def.default ? String(def.default) : undefined,
@@ -75,7 +75,7 @@ function propDefToEntry(def: TPropDefEntry): TEntryItem {
         return [
           entry[0],
           {
-            label: entry[0],
+            label: entry[0].replaceAll("'", ''),
             type: Array.isArray(entry[1].type)
               ? entry[1].type.join(" | ")
               : entry[1].type,
@@ -117,17 +117,17 @@ function methodDefToEntry(defTuple: [string, TMethodDefinition]): TEntryItem {
     examples: [],
     returns: defTuple[1].returns
       ? {
-          label: "return",
-          type: Array.isArray(defTuple[1].returns.type)
-            ? defTuple[1].returns.type.join(" | ")
-            : defTuple[1].returns.type,
-          desc: defTuple[1].returns.desc,
-          params: {},
-          examples: (defTuple[1].returns.examples ?? []).map((ex) =>
-            String(ex),
-          ),
-          returns: undefined,
-        }
+        label: "return",
+        type: Array.isArray(defTuple[1].returns.type)
+          ? defTuple[1].returns.type.join(" | ")
+          : defTuple[1].returns.type,
+        desc: defTuple[1].returns.desc,
+        params: {},
+        examples: (defTuple[1].returns.examples ?? []).map((ex) =>
+          String(ex),
+        ),
+        returns: undefined,
+      }
       : undefined,
   };
 }
@@ -176,37 +176,18 @@ onMounted(() => {
       <q-tab-panel name="props" class="shallow-panel">
         <div class="flex row">
           <div>
-            <q-tabs
-              v-model="activeTabProps"
-              vertical
-              class="tab-container-json-api"
-            >
-              <q-tab
-                v-for="propTab of Array.from(propzByCategory.entries())"
-                :key="propTab[0]"
-                :name="propTab[0]"
-                :label="capitalize(propTab[0])"
-              >
-                <q-badge
-                  :label="propTab[1].length"
-                  color="primary"
-                  v-bind="bingBadgeCount"
-                />
+            <q-tabs v-model="activeTabProps" vertical class="tab-container-json-api">
+              <q-tab v-for="propTab of Array.from(propzByCategory.entries())" :key="propTab[0]" :name="propTab[0]"
+                :label="capitalize(propTab[0])">
+                <q-badge :label="propTab[1].length" color="primary" v-bind="bingBadgeCount" />
               </q-tab>
             </q-tabs>
           </div>
           <q-tab-panels v-model="activeTabProps">
-            <q-tab-panel
-              v-for="propTab of Array.from(propzByCategory.entries())"
-              :key="propTab[0]"
-              :name="propTab[0]"
-              class="shallow-panel"
-            >
+            <q-tab-panel v-for="propTab of Array.from(propzByCategory.entries())" :key="propTab[0]" :name="propTab[0]"
+              class="shallow-panel">
               <q-list>
-                <template
-                  v-for="(def, indexDef) of propTab[1]"
-                  :key="def.label"
-                >
+                <template v-for="(def, indexDef) of propTab[1]" :key="def.label">
                   <EntryItem :entry="propDefToEntry(def)" />
                   <q-separator v-if="indexDef < propTab[1].length - 1" />
                 </template>
@@ -233,18 +214,22 @@ onMounted(() => {
 .shallow-panel {
   padding: 0px;
 }
+
 .entry-container {
   display: flex;
   flex-direction: column;
   gap: 2px;
   padding: 12px;
 }
+
 .entry-title-btn {
   min-height: 1.8em;
 }
+
 .entry-subtitle-btn {
   min-height: 1.6em;
 }
+
 .tab-container-json-api {
   background-color: var(--page-background);
 }

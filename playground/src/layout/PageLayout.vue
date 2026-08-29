@@ -41,7 +41,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div>
+    <div class="page-layout">
         <div class="flex column items-start">
             <page-section-menu v-if="propsComponent.showSectionMenu && $q.screen.gt.sm" />
             <h2>{{ propsComponent.title }}</h2>

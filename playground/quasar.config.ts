@@ -3,7 +3,7 @@
 import { defineConfig } from "#q-app";
 
 export default defineConfig((/* ctx */) => ({
-  boot: [],
+  boot: ["big-bang"],
   css: ["app.scss"],
   extras: [
     "roboto-font", // optional, you are not bound to it

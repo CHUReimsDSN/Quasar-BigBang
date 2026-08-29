@@ -1,6 +1,6 @@
 {
   "name": "quasar-app-extension-big-bang",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Alternate theme for Quasar app",
   "scripts": {
     "prepack": "tsx src/scripts/prepack.ts"

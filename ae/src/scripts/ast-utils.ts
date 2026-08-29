@@ -80,7 +80,7 @@ export const getType = (
     return "Any";
   }
   if (node.kind === ts.SyntaxKind.UnknownKeyword) {
-    return "Any";
+    return "unknown";
   }
   if (node.kind === ts.SyntaxKind.NullKeyword) {
     return "null";
@@ -127,7 +127,7 @@ export const getLiteralType = (node: ts.LiteralTypeNode): string => {
   ) {
     return "Boolean";
   }
-  return "Any";
+  return "unknown";
 };
 
 export const getTypeReference = (

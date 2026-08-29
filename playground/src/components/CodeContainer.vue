@@ -80,5 +80,5 @@ onMounted(() => {
 .shiki
     padding: 12px
     padding-right: 40px
-    margin: 0px
+    margin: 0px    
 </style>

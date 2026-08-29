@@ -2,15 +2,11 @@
 import { ref } from "vue";
 import { primaries, type TPrimaryLabel } from "../core/primary";
 import { surfaces, type TSurfaceLabel } from "../core/surface";
-import { inject } from 'vue'
-import { bigBangThemeKey } from "../core/inject-key";
-
-// consts
-const bigBangTheme = inject(bigBangThemeKey)!
+import { BigBangTheme } from "../core/big-bang-theme";
 
 // refs
-const selectedPrimary = ref(bigBangTheme.getPrimary());
-const selectedSurface = ref(bigBangTheme.getSurface());
+const selectedPrimary = ref(BigBangTheme.getPrimary());
+const selectedSurface = ref(BigBangTheme.getSurface());
 
 // functions
 /**
@@ -19,7 +15,7 @@ const selectedSurface = ref(bigBangTheme.getSurface());
  * @param label The primary label
  */
 function setPrimary(label: TPrimaryLabel) {
-  bigBangTheme.setPrimary(label);
+  BigBangTheme.setPrimary(label);
   selectedPrimary.value = label;
 }
 
@@ -29,7 +25,7 @@ function setPrimary(label: TPrimaryLabel) {
  * @param label The surface label
  */
 function setSurface(label: TSurfaceLabel) {
-  bigBangTheme.setSurface(label);
+  BigBangTheme.setSurface(label);
   selectedSurface.value = label;
 }
 

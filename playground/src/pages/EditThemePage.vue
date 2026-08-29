@@ -6,11 +6,11 @@ import PageSection from "@/components/PageSection.vue";
 import PageLayout from "@/layout/PageLayout.vue";
 
 // consts
-const usageCode = `// App.vue
-import { inject } from 'vue';
-import { bigBangThemeKey } from "quasar-app-extension-big-bang"
+const usageCode = `// src/boot/big-bang.ts
+import { BigBangTheme } from "quasar-app-extension-big-bang";
 
-const bigBang = inject(bigBangThemeKey);`
+BigBangTheme.setSaveMode("local-storage");
+BigBangTheme.tryLoadTheme();`
 const saveAndSetCode = `bigBang?.setSaveMode("local-storage");
 bigBang?.tryLoadTheme();`
 const cssPrimaryVariableCode = `// default primary palette is 'Emerald'
@@ -91,9 +91,9 @@ body.body--dark {
 <template>
   <PageLayout title="Edit theme">
     <PageSection subtitle="Usage">
-      <div>The BigBangTheme class is an injected instance class that live within the application.</div>
+      <div>The BigBangTheme static class lives within the application.</div>
       <div>It provides an API to set primary and surface colors and</div>
-      <div> can save configuration to the browser's local storage.</div>
+      <div> can save configuration to the browser's local storage for autoloading preferences.</div>
       <br />
       <CodeContainer :code="usageCode" lang="ts" />
       <br />

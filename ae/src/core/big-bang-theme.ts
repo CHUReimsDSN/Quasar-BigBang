@@ -7,18 +7,14 @@ import { Saver, type TSaveStrategy } from "../core/saver";
  * Shall be used in components by using the 'inject' method from vue
  */
 export class BigBangTheme {
-  private _primary: TPrimaryLabel;
-  private _surface: TSurfaceLabel;
-  private _saveStrategy: TSaveStrategy;
+  private static _primary: TPrimaryLabel = "Emerald";
+  private static _surface: TSurfaceLabel = "Slate";
+  private static _saveStrategy: TSaveStrategy = "none";
 
   /**
-   * Don't instanciate outside of the extension
+   * Keep this for internal behaviour
    */
-  constructor() {
-    this._primary = "Emerald";
-    this._surface = "Slate";
-    this._saveStrategy = "none";
-  }
+  private constructor() {}
 
   /**
    * Set the primary color for the entire app.
@@ -26,7 +22,7 @@ export class BigBangTheme {
    *
    * @param primaryLabel Label of the primary color
    */
-  setPrimary(primaryLabel: TPrimaryLabel) {
+  static setPrimary(primaryLabel: TPrimaryLabel) {
     const primary = primaries.get(primaryLabel);
     if (!primary) {
       return;
@@ -44,7 +40,7 @@ export class BigBangTheme {
   /**
    * Get current primary label
    */
-  getPrimary() {
+  static getPrimary() {
     return this._primary;
   }
 
@@ -54,7 +50,7 @@ export class BigBangTheme {
    *
    * @param surfaceLabel Label of the surface color
    */
-  setSurface(surfaceLabel: TSurfaceLabel) {
+  static setSurface(surfaceLabel: TSurfaceLabel) {
     const surface = surfaces.get(surfaceLabel);
     if (!surface) {
       return;
@@ -72,7 +68,7 @@ export class BigBangTheme {
   /**
    * Get current surface label
    */
-  getSurface() {
+  static getSurface() {
     return this._surface;
   }
 
@@ -81,7 +77,7 @@ export class BigBangTheme {
    *
    * @param strategy Strategy for the save mode
    */
-  setSaveMode(strategy: TSaveStrategy) {
+  static setSaveMode(strategy: TSaveStrategy) {
     this._saveStrategy = strategy;
   }
 
@@ -89,7 +85,7 @@ export class BigBangTheme {
    * Try to save the theme depending on the save mode
    * If save mode is set to 'none', this will do nothing
    */
-  trySaveTheme() {
+  static trySaveTheme() {
     if (this._saveStrategy === "none") {
       return false;
     }
@@ -102,7 +98,7 @@ export class BigBangTheme {
    * If the save mode is set to 'none', this will do nothing
    * If the load result is empty, the theme will be set with the default primary and surface colors
    */
-  tryLoadTheme() {
+  static tryLoadTheme() {
     if (this._saveStrategy === "none") {
       return false;
     }
@@ -115,7 +111,7 @@ export class BigBangTheme {
   /**
    * Get the current save strategy
    */
-  getSaveMode() {
+  static getSaveMode() {
     return this._saveStrategy;
   }
 }
