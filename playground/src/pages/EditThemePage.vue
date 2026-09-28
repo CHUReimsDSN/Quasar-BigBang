@@ -9,10 +9,10 @@ import PageLayout from "@/layout/PageLayout.vue";
 const usageCode = `// src/boot/big-bang.ts
 import { BigBangTheme } from "quasar-app-extension-big-bang";
 
-BigBangTheme.setSaveMode("local-storage");
 BigBangTheme.tryLoadTheme();`
 const saveAndSetCode = `bigBang?.setSaveMode("local-storage");
-bigBang?.tryLoadTheme();`
+BigBangTheme.setSaveMode("local-storage");
+BigBangTheme.tryLoadTheme();`
 const cssPrimaryVariableCode = `// default primary palette is 'Emerald'
 --primary-50: #ecfdf5;
 --primary-100: #d1fae5;
