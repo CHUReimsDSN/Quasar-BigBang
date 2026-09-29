@@ -14,7 +14,7 @@
     "'model-value'": {
       "type": [
         "String",
-        "Any"
+        "unknown"
       ],
       "desc": "Time of the component",
       "category": "model",
