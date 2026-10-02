@@ -429,8 +429,9 @@ body // ✅
 
 .q-card // ✅
   display: flex
-  background: var(--card-background)
-  padding: 0.8rem
+  background-color: var(--card-background)
+  :where(&)
+    padding: 0.8rem
   &--flat
     background: unset
   &--bordered

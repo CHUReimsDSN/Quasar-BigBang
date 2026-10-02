@@ -156,7 +156,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <q-card v-if="showComponent" class="no-padding">
+  <q-card v-if="showComponent" class="column no-padding">
     <q-tabs v-model="activeTab" class="tab-container-json-api">
       <q-tab v-if="propsTabShow" name="props" label="Props">
         <q-badge :label="propCount" color="primary" v-bind="bingBadgeCount" />

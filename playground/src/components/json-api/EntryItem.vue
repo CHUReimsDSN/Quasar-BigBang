@@ -66,7 +66,7 @@ function getDefaultValue() {
               v-for="param of Object.entries(propsComponent.entry.params)"
               :key="param[0]"
             >
-              <q-card style="padding: 6px">
+              <q-card class="column" style="padding: 6px">
                 <div class="flex column">
                   <div class="flex row items-center">
                     <q-btn
@@ -94,7 +94,7 @@ function getDefaultValue() {
         </template>
 
         <template v-if="propsComponent.entry.returns">
-          <q-card style="padding: 6px">
+          <q-card class="column" style="padding: 6px">
             <div class="flex column">
               <div class="flex row items-center">
                 <q-btn class="entry-subtitle-btn" color="info" label="return" />

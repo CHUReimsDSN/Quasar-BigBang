@@ -475,7 +475,7 @@ onMounted(() => {
       <DynamicCard v-model="showCard">
         <q-btn label="Click me" color="secondary" @click="dialog = true" />
         <q-dialog v-model="dialog">
-          <q-card class="flex-center">
+          <q-card class="flex-center column">
             <q-card-section class="row items-center">
               <div class="text-body1 text-center text-weight-bold">
                 Hello, I'm a dialog

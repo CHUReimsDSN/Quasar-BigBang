@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
 import { appRouteMenuItems, type TRouteMenu } from "@/utils/routes-menu";
 import NavigationItem from "./NavigationItem.vue";
 
 // refs
 const drawer = defineModel({ default: true });
-const miniState = ref(true);
-const overHeader = ref(true);
+const drawerWith = ref(0);
 const searchedRoute = ref<string>();
-const isWriting = ref(false);
 const routes = ref<Readonly<TRouteMenu[]>>(appRouteMenuItems);
 
-// Computeds
+// computeds
 const navRoutes = computed(() => {
   if (searchedRoute.value) {
     const regex = new RegExp(String.raw`.*${searchedRoute.value}.*`, "i");
@@ -21,8 +19,8 @@ const navRoutes = computed(() => {
   }
 });
 
-// Fonctions
-const isRouteValid = (route: TRouteMenu, regex: RegExp) => {
+// fonctions
+function isRouteValid(route: TRouteMenu, regex: RegExp) {
   if (regex.test(route.label ?? "")) {
     return true;
   }
@@ -38,40 +36,47 @@ const isRouteValid = (route: TRouteMenu, regex: RegExp) => {
     }
   }
   return false;
-};
+}
+function computeDrawerWidth() {
+  drawerWith.value = ((17.395 / 100) * window.innerWidth) + 120
+}
+
+// lifeCycle
+onMounted(() => {
+  window.addEventListener("resize", computeDrawerWidth);
+  computeDrawerWidth()
+});
+onUnmounted(() => {
+  window.removeEventListener("resize", computeDrawerWidth);
+});
 </script>
 
 <template>
-  <q-drawer v-model="drawer" :mini="miniState && !overHeader && !isWriting" :mini-to-overlay="!overHeader"
-    noMiniAnimation @mouseenter="miniState = false" @mouseleave="miniState = true"
-    :class="{ 'hide-scrollbar': miniState }" :width="240">
+  <q-drawer v-model="drawer" :width="drawerWith">
     <q-list class="q-pa-md">
-      <q-item>
-        <q-item-section avatar>
-          <q-icon name="home" class="cursor-pointer" />
-        </q-item-section>
-
-        <q-item-section>
-          <q-space />
-        </q-item-section>
-
-        <q-item-section side>
-          <q-icon :name="overHeader ? 'mdi-pin-off' : 'mdi-pin'" :color="overHeader ? 'primary' : ''"
-            class="cursor-pointer" @click="overHeader = !overHeader" />
-        </q-item-section>
-      </q-item>
-
+      <div v-if="$q.screen.gt.sm" class="flex q-pl-sm">
+        <h1>Quasar BigBang</h1>
+      </div>
       <div class="q-py-md q-px-sm flex flex-center">
-        <q-input v-if="!miniState || overHeader || isWriting" v-model="searchedRoute" clearable placeholder="Search"
-          @blur="() => (isWriting = false)" @focus="() => (isWriting = true)">
+        <q-input v-model="searchedRoute" clearable placeholder="Search">
           <template v-slot:prepend>
             <q-icon name="search" />
           </template>
         </q-input>
-        <q-icon v-else name="search" class="menu-item" />
       </div>
 
-      <NavigationItem v-for="(route, i) in navRoutes" :key="i" :route="route" :searchedRoute="searchedRoute" />
+      <NavigationItem
+        v-for="(route, i) in navRoutes"
+        :key="i"
+        :route="route"
+        :searchedRoute="searchedRoute"
+      />
     </q-list>
   </q-drawer>
 </template>
+
+<style lang="sass">
+.q-drawer
+  background-color: var(--page-background);
+  padding-left: calc(17.395vw - 142.05px);
+</style>

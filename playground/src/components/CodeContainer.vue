@@ -67,6 +67,9 @@ onMounted(() => {
     border: 1px solid var(--field-border-color)
     border-radius: 6px
     margin: 4px 0px
+    width: 100%
+    &-shiki
+      width: 100%
 
 .code-copy-container
   position: absolute
@@ -80,5 +83,6 @@ onMounted(() => {
 .shiki
     padding: 12px
     padding-right: 40px
-    margin: 0px    
+    margin: 0px
+    overflow: hide
 </style>

@@ -3,6 +3,7 @@ import {
   QBtn,
   QBtnDropdown,
   QBtnGroup,
+  QBtnToggle,
   QCard,
   QDate,
   QDialog,
@@ -73,6 +74,19 @@ export function setupDefaultProps() {
     default: expandIcon,
   };
 
+  QBtnToggle.props.unelevated = {
+    type: Boolean,
+    default: true,
+  };
+  QBtnToggle.props.noCaps = {
+    type: Boolean,
+    default: true,
+  };
+  QBtnToggle.props.dense = {
+    type: Boolean,
+    default: true,
+  };
+  
   QCard.props.bordered = {
     type: Boolean,
     default: true,
