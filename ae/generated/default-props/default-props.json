@@ -16,6 +16,11 @@
     "dense": true,
     "dropdownIcon": "keyboard_arrow_down"
   },
+  "QBtnToggle": {
+    "unelevated": true,
+    "noCaps": true,
+    "dense": true
+  },
   "QCard": {
     "bordered": true
   },

@@ -1,6 +1,7 @@
 import { primaries, type TPrimaryLabel } from "../core/primary";
 import { surfaces, type TSurfaceLabel } from "../core/surface";
 import { Saver, type TSaveStrategy } from "../core/saver";
+import { setupDefaultProps } from "./default-props";
 
 /**
  * Injected class for managing theme
@@ -113,5 +114,9 @@ export class BigBangTheme {
    */
   static getSaveMode() {
     return this._saveStrategy;
+  }
+
+  static setupDefaultProps() {
+    setupDefaultProps()
   }
 }
