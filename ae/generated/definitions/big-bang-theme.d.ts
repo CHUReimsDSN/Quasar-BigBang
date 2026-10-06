@@ -56,4 +56,5 @@ export declare class BigBangTheme {
      * Get the current save strategy
      */
     static getSaveMode(): TSaveStrategy;
+    static setupDefaultProps(): void;
 }
