@@ -6,7 +6,6 @@ export default defineConfig((/* ctx */) => ({
   boot: ["big-bang"],
   css: ["app.scss"],
   extras: [
-    "roboto-font", // optional, you are not bound to it
     "material-icons", // optional, you are not bound to it
     "mdi-v7",
   ],

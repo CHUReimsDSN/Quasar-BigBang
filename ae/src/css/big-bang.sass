@@ -2,12 +2,13 @@
 @use 'sass:color'
 
 @font-face // ✅
-  font-family: customfont
-  src: url(./fonts/inter_var.ttf)
+  font-family: 'bigBangFont'
+  src: url(./fonts/inter_var.woff2) format("woff2")
+  font-display: swap
 
 body // ✅
   font-weight: $body-font-weight
-  font-family: 'customfont'
+  font-family: 'bigBangFont'
   color: var(--text-color) !important
   background: var(--page-background) !important
   &.desktop
@@ -598,7 +599,7 @@ $notification-colors: ( // ✅
 // agGrid
 .ag-root-wrapper // ✅
   font-weight: $body-font-weight
-  font-family: 'customfont'
+  font-family: 'bigBangFont'
 
 :root // ✅
   --ag-wrapper-border-radius: #{$generic-border-radius} !important
