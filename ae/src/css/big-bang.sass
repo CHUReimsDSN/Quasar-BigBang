@@ -1,14 +1,9 @@
 @use 'sass:map'
 @use 'sass:color'
+@import './fonts.css'
 
-@font-face // ✅
-  font-family: 'bigBangFont'
-  src: url(./fonts/inter_var.woff2) format("woff2")
-  font-display: swap
-
-body // ✅
+body 
   font-weight: $body-font-weight
-  font-family: 'bigBangFont'
   color: var(--text-color) !important
   background: var(--page-background) !important
   &.desktop
@@ -17,7 +12,7 @@ body // ✅
       &:before, &:after
         transition: background-color .2s cubic-bezier(.25,.8,.5,1), opacity .2s cubic-bezier(.25,.8,.5,1)
 
-// ✅
+
 ::-webkit-scrollbar
   width: 8px
 ::-webkit-scrollbar-track
@@ -28,25 +23,25 @@ body // ✅
 ::-webkit-scrollbar-thumb:hover
   background: var(--field-border-color-hover)
 
-.q-drawer // ✅
+.q-drawer 
   background: var(--drawer-background)
   &--bordered
     border: none
     border-color: var(--border-color) !important
 
-.q-header // ✅
+.q-header 
   background: var(--header-background)
   color: var(--text-color)
   &--bordered
     border: none
     border-bottom: 1px solid var(--border-color) !important
 
-.q-dialog // ✅
+.q-dialog 
   &__backdrop
     background: rgba(from var(--card-background))
     backdrop-filter: blur(2px)
 
-.q-item // ✅
+.q-item 
   border-radius: $generic-border-radius
   &--dense
     min-height: $q-item-min-height
@@ -80,7 +75,7 @@ body // ✅
       &.q-item__section--thumbnail
         margin-right: -4px
 
-.q-expansion-item // ✅
+.q-expansion-item 
   &__toggle-icon
     padding-left: 4px
   &.menu-expandable
@@ -90,7 +85,7 @@ body // ✅
       padding: 0px
       padding-left: 4px
 
-.q-menu // ✅
+.q-menu 
   padding: 6px
   border-radius: $generic-border-radius 
   border: 1px solid var(--card-border-color)
@@ -98,7 +93,7 @@ body // ✅
   &::-webkit-scrollbar
     width: 4px
 
-.q-tab // ✅
+.q-tab 
   padding: 0 14px
   padding-top: 8px
   transition-duration: 0.2s
@@ -134,7 +129,7 @@ body // ✅
   &-panels
     background: inherit
 
-.q-tabs // ✅
+.q-tabs 
   transition: color 0.2s, background-color 0.2s
   &__content--align-center
     justify-content: unset
@@ -150,7 +145,7 @@ body // ✅
       width: 1px
 
 
-.q-checkbox // ✅
+.q-checkbox 
   &__inner
     min-width: 2.25rem
     width: 2.25rem
@@ -174,7 +169,7 @@ body // ✅
   path
     transition-duration: 0.1s
 
-.q-date // ✅
+.q-date 
   box-shadow: none
   background: inherit
   width: min-content
@@ -214,7 +209,7 @@ body // ✅
         .block
           padding-top: 1px
 
-.q-field // ✅
+.q-field 
   width: auto
   max-width: max-content
   min-width: $field-min-width
@@ -303,7 +298,7 @@ body // ✅
     .q-field__control
       height: auto
 
-.q-select // ✅
+.q-select 
   &.q-field--dense
     &.q-select--without-input
       .q-field__control-container
@@ -329,7 +324,7 @@ body // ✅
   &__dropdown-icon
     transition: transform 0.2s
 
-.q-toggle // ✅
+.q-toggle 
   &__thumb
     transition-duration: 0.2s
     &:after
@@ -385,7 +380,7 @@ body // ✅
       top: 0.165em
       left: 0.095em
 
-.q-radio // ✅
+.q-radio 
   &__inner
     transition: color 0.2s
     color: var(--field-border-color)
@@ -403,7 +398,7 @@ body // ✅
       &:not(&--truthy)
         color: var(--field-border-color-hover)
 
-.q-btn // ✅
+.q-btn 
   transition: background .2s
   &--dense
     min-height: $q-btn-min-height
@@ -419,16 +414,16 @@ body // ✅
     &.bg-primary, &.bg-positive, &.bg-negative, &.bg-info, &.bg-warning
       color: var(--btn-text-color) !important
 
-.q-btn-dropdown // ✅
+.q-btn-dropdown 
   &.q-btn--dense
     .q-btn__content
       .q-btn-dropdown__arrow
         margin-left: 4px
 
-.q-btn-group // ✅
+.q-btn-group 
   border-radius: $generic-border-radius
 
-.q-card // ✅
+.q-card 
   display: flex
   background-color: var(--card-background)
   :where(&)
@@ -440,7 +435,7 @@ body // ✅
     border: 1px solid var(--card-border-color)
     border-radius: 8px
 
-.q-uploader // ✅
+.q-uploader 
   box-shadow: none
   width: auto
   max-width: max-content
@@ -458,7 +453,7 @@ body // ✅
   &--bordered
     border: 1px solid var(--card-border-color)
 
-.q-banner // ✅
+.q-banner 
   border-radius: $generic-border-radius
   &.bg-positive
     background-color: var(--positive-background-alt-color) !important
@@ -469,15 +464,15 @@ body // ✅
   &.bg-info
     background-color: var(--info-background-alt-color) !important
 
-.q-tree // ✅
+.q-tree 
   &--dense
     .q-tree__node-header
       padding: 3px
 
-.q-badge // ✅
+.q-badge 
   background: var(--secondary-color)
 
-.q-chip // ✅
+.q-chip 
   background: var(--secondary-color)
   font-size: 13px
   border-radius: 1rem
@@ -499,10 +494,10 @@ body // ✅
     .q-chip__content
       padding: 2px
 
-.q-separator // ✅
+.q-separator 
   background: var(--card-border-color) !important
 
-.q-list // ✅
+.q-list 
   &--bordered
     border-radius: $generic-border-radius
     border: 1px solid var(--card-border-color)
@@ -511,7 +506,7 @@ body // ✅
       min-height: $q-item-min-height
       padding: $q-item-padding
 
-@each $heading, $value in $h-tags // ✅
+@each $heading, $value in $h-tags 
   #{$heading}
     font-size: map.get($value, "size")
     font-weight: map.get($value, "weight")
@@ -522,7 +517,7 @@ body // ✅
 
 
 // notifications
-.q-notification // ✅
+.q-notification 
   width: 310px
   max-width: 100%
   margin: 20px 20px 0
@@ -546,11 +541,11 @@ body // ✅
     padding: 2px 12px
     min-height: 36px
 
-body.body--dark // ✅
+body.body--dark 
   .q-notification
     backdrop-filter: blur(3px)
 
-$notification-colors: ( // ✅
+$notification-colors: ( 
   positive: var(--positive-color),
   warning: var(--warning-color),
   negative: var(--negative-color),
@@ -558,7 +553,7 @@ $notification-colors: ( // ✅
   secondary: var(--secondary-color)
 )
 
-@each $name, $color in $notification-colors // ✅
+@each $name, $color in $notification-colors 
   .q-notification.bg-#{$name}
     background-color: var(--#{$name}-background-alt-color) !important
     border-color: hsl(from $color h s l / 0.3) !important
@@ -579,17 +574,17 @@ $notification-colors: ( // ✅
 
 
 // utils
-.no-focus-helper // ✅
+.no-focus-helper 
   .q-focus-helper
     display: none
 
-.menu-item // ✅
+.menu-item 
   font-weight: map.get($text-weights, medium)
   color: var(--menu-item-color)
   &:hover
     color: var(--menu-item-color-hover)
 
-.menu-item-active // ✅
+.menu-item-active 
   color: var(--primary-text-color) !important
   font-weight: map.get($text-weights, bold)
   background: var(--menu-item-active-color) !important
@@ -597,11 +592,11 @@ $notification-colors: ( // ✅
 
 
 // agGrid
-.ag-root-wrapper // ✅
+.ag-root-wrapper 
   font-weight: $body-font-weight
   font-family: 'bigBangFont'
 
-:root // ✅
+:root 
   --ag-wrapper-border-radius: #{$generic-border-radius} !important
   --ag-border-radius: #{$generic-border-radius} !important
   --ag-font-size: #{$body-font-size} !important
