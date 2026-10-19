@@ -38,13 +38,13 @@ function isRouteValid(route: TRouteMenu, regex: RegExp) {
   return false;
 }
 function computeDrawerWidth() {
-  drawerWith.value = ((17.395 / 100) * window.innerWidth) + 120
+  drawerWith.value = (17.395 / 100) * window.innerWidth + 120;
 }
 
 // lifeCycle
 onMounted(() => {
   window.addEventListener("resize", computeDrawerWidth);
-  computeDrawerWidth()
+  computeDrawerWidth();
 });
 onUnmounted(() => {
   window.removeEventListener("resize", computeDrawerWidth);

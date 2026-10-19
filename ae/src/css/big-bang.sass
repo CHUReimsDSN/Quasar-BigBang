@@ -28,6 +28,12 @@ body
   &--bordered
     border: none
     border-color: var(--border-color) !important
+  &--left
+    &.q-drawer--bordered
+      border-right: 1px solid var(--border-color) !important
+  &--right
+    &.q-drawer--bordered
+      border-left: 1px solid var(--border-color) !important
 
 .q-header 
   background: var(--header-background)
@@ -137,12 +143,16 @@ body
     flex: unset !important
   .q-tab
     border-bottom: 1px solid var(--field-border-color-hover)
+  &--horizontal
+    .q-tab__indicator
+      transform: translateY(1px) !important
   &--vertical
-    border-right: 1px solid var(--field-border-color-hover)
     .q-tab
       border-bottom: none
+      border-right: 1px solid var(--field-border-color-hover)
     .q-tab__indicator
       width: 1px
+      transform: translateX(1px) !important
 
 
 .q-checkbox 
@@ -596,13 +606,14 @@ $notification-colors: (
   font-weight: $body-font-weight
   font-family: 'bigBangFont'
 
-:root 
+:root body.body--dark 
   --ag-wrapper-border-radius: #{$generic-border-radius} !important
   --ag-border-radius: #{$generic-border-radius} !important
   --ag-font-size: #{$body-font-size} !important
   --ag-spacing: 7px !important
   --ag-header-font-weight: 600 !important
   --ag-menu-shadow: none !important
+  --ag-background-color: var(--card-background)
 
 
 

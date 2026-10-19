@@ -1,7 +1,11 @@
 import { primaries, type TPrimaryLabel } from "../core/primary";
 import { surfaces, type TSurfaceLabel } from "../core/surface";
 import { Saver, type TSaveStrategy } from "../core/saver";
-import { setupDefaultProps } from "./default-props";
+import {
+  setPropsByComponent,
+  setupBigBangProps,
+  type TQuasarComponent,
+} from "./default-props";
 
 /**
  * Injected class for managing theme
@@ -116,7 +120,21 @@ export class BigBangTheme {
     return this._saveStrategy;
   }
 
-  static setupDefaultProps() {
-    setupDefaultProps()
+  /**
+   * Setup the BigBang props for the Quasar components
+   */
+  static setupBigBangProps() {
+    setupBigBangProps();
+  }
+
+  /**
+   * Set props to Quasar's components
+   */
+  static setPropsByComponent(
+    component: TQuasarComponent,
+    propsName: string,
+    value: unknown,
+  ) {
+    setPropsByComponent(component, propsName, value);
   }
 }

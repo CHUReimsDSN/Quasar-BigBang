@@ -79,9 +79,9 @@ onMounted(() => {
       <DynamicCard v-model="showCard">
         <div v-bind="bindContainer">
           <q-btn label="Primary" color="primary" />
-          <q-btn label="Secondary" color="secondary" />
-          <q-btn label="With icon" color="secondary" icon="add" />
-          <q-btn label="Loading" color="secondary" loading />
+          <q-btn label="Secondary (default)" />
+          <q-btn label="With icon" icon="add" />
+          <q-btn label="Loading" loading />
           <q-btn icon="rocket_launch" class="no-focus-helper" />
         </div>
         <div v-bind="bindContainer">
@@ -92,9 +92,13 @@ onMounted(() => {
           <q-btn label="No color" />
         </div>
         <div v-bind="bindContainer">
-          <q-btn-dropdown label="Dropdown" color="secondary">
+          <q-btn-dropdown label="Dropdown">
             <q-list>
-              <q-item v-for="(option, index) of dropdownOptions" :key="index" clickable>
+              <q-item
+                v-for="(option, index) of dropdownOptions"
+                :key="index"
+                clickable
+              >
                 <q-item-section>{{ option }} {{ index + 1 }}</q-item-section>
               </q-item>
             </q-list>
@@ -102,9 +106,9 @@ onMounted(() => {
         </div>
         <div v-bind="bindContainer">
           <q-btn-group>
-            <q-btn label="A" icon="timeline" color="secondary" />
-            <q-btn label="Button" color="secondary" />
-            <q-btn label="Group" color="secondary" />
+            <q-btn label="A" icon="timeline" />
+            <q-btn label="Button" />
+            <q-btn label="Group" />
           </q-btn-group>
         </div>
       </DynamicCard>
@@ -117,22 +121,50 @@ onMounted(() => {
           <DynamicFormLabel v-model="showLabel" label="Input" #props="props">
             <q-input v-model="input" v-bind="props" />
           </DynamicFormLabel>
-          <DynamicFormLabel v-model="showLabel" label="Placeholder" #props="props">
+          <DynamicFormLabel
+            v-model="showLabel"
+            label="Placeholder"
+            #props="props"
+          >
             <q-input v-model="input" placeholder="Placeholder" v-bind="props" />
           </DynamicFormLabel>
-          <DynamicFormLabel v-model="showLabel" label="Clearable" #props="props">
+          <DynamicFormLabel
+            v-model="showLabel"
+            label="Clearable"
+            #props="props"
+          >
             <q-input v-model="input" clearable v-bind="props" />
           </DynamicFormLabel>
         </div>
         <div v-bind="bindContainer">
-          <DynamicFormLabel v-model="showLabel" label="With hint" #props="props">
+          <DynamicFormLabel
+            v-model="showLabel"
+            label="With hint"
+            #props="props"
+          >
             <q-input v-model="input" hint="I'm a hint" v-bind="props" />
           </DynamicFormLabel>
-          <DynamicFormLabel v-model="showLabel" label="With rules" #props="props">
-            <q-input v-model="input2" :rules="[() => 'An error']" v-bind="props" />
+          <DynamicFormLabel
+            v-model="showLabel"
+            label="With rules"
+            #props="props"
+          >
+            <q-input
+              v-model="input2"
+              :rules="[() => 'An error']"
+              v-bind="props"
+            />
           </DynamicFormLabel>
-          <DynamicFormLabel v-model="showLabel" label="With rules not triggered" #props="props">
-            <q-input v-model="input" :rules="[(val) => String(val).length < 1 || 'An error']" v-bind="props" />
+          <DynamicFormLabel
+            v-model="showLabel"
+            label="With rules not triggered"
+            #props="props"
+          >
+            <q-input
+              v-model="input"
+              :rules="[(val) => String(val).length < 1 || 'An error']"
+              v-bind="props"
+            />
           </DynamicFormLabel>
         </div>
         <div v-bind="bindContainer">
@@ -153,7 +185,11 @@ onMounted(() => {
           <DynamicFormLabel v-model="showLabel" label="Suffix" #props="props">
             <q-input v-model="input" suffix="Kg" v-bind="props" />
           </DynamicFormLabel>
-          <DynamicFormLabel v-model="showLabel" label="Different color" #props="props">
+          <DynamicFormLabel
+            v-model="showLabel"
+            label="Different color"
+            #props="props"
+          >
             <q-input v-model="input" color="info" v-bind="props" />
           </DynamicFormLabel>
         </div>
@@ -201,10 +237,18 @@ onMounted(() => {
           <DynamicFormLabel v-model="showLabel" label="Number" #props="props">
             <q-input v-model="input" type="number" v-bind="props" />
           </DynamicFormLabel>
-          <DynamicFormLabel v-model="showLabel" label="Native date" #props="props">
+          <DynamicFormLabel
+            v-model="showLabel"
+            label="Native date"
+            #props="props"
+          >
             <q-input v-model="input" type="date" v-bind="props" />
           </DynamicFormLabel>
-          <DynamicFormLabel v-model="showLabel" label="Native time" #props="props">
+          <DynamicFormLabel
+            v-model="showLabel"
+            label="Native time"
+            #props="props"
+          >
             <q-input v-model="input" type="time" v-bind="props" />
           </DynamicFormLabel>
         </div>
@@ -226,11 +270,30 @@ onMounted(() => {
           <DynamicFormLabel v-model="showLabel" label="Select" #props="props">
             <q-select v-model="input" :options="selectOptions" v-bind="props" />
           </DynamicFormLabel>
-          <DynamicFormLabel v-model="showLabel" label="Use input" #props="props">
-            <q-select v-model="input" :options="selectOptions" useInput v-bind="props" />
+          <DynamicFormLabel
+            v-model="showLabel"
+            label="Use input"
+            #props="props"
+          >
+            <q-select
+              v-model="input"
+              :options="selectOptions"
+              useInput
+              v-bind="props"
+            />
           </DynamicFormLabel>
-          <DynamicFormLabel v-model="showLabel" label="Multiple with chips" #props="props">
-            <q-select v-model="input3" :options="selectOptions" multiple useChips v-bind="props" />
+          <DynamicFormLabel
+            v-model="showLabel"
+            label="Multiple with chips"
+            #props="props"
+          >
+            <q-select
+              v-model="input3"
+              :options="selectOptions"
+              multiple
+              useChips
+              v-bind="props"
+            />
           </DynamicFormLabel>
         </div>
       </DynamicCard>
@@ -250,7 +313,11 @@ onMounted(() => {
       <DynamicCard v-model="showCard">
         <div v-bind="bindContainer">
           <q-toggle v-model="toggle" label="False value" />
-          <q-toggle v-model="toggle2" label="Intermediate value" toggleIndeterminate />
+          <q-toggle
+            v-model="toggle2"
+            label="Intermediate value"
+            toggleIndeterminate
+          />
           <q-toggle v-model="toggle3" label="True value" />
           <q-toggle v-model="toggle" label="Different color" color="info" />
         </div>
@@ -264,7 +331,12 @@ onMounted(() => {
           <q-radio v-model="radio" val="rectangle" label="Rectangle" />
           <q-radio v-model="radio" val="ellipse" label="Ellipse" />
           <q-radio v-model="radio" val="polygon" label="Polygon" />
-          <q-radio v-model="radio" val="colored" label="Different color" color="info" />
+          <q-radio
+            v-model="radio"
+            val="colored"
+            label="Different color"
+            color="info"
+          />
         </div>
       </DynamicCard>
     </PageSection>
@@ -272,7 +344,7 @@ onMounted(() => {
     <PageSection subtitle="Uploader">
       <DynamicCard v-model="showCard">
         <div v-bind="bindContainer">
-          <q-uploader color="secondary" label="test" />
+          <q-uploader label="test" />
         </div>
       </DynamicCard>
     </PageSection>
@@ -306,20 +378,20 @@ onMounted(() => {
 
         <div v-bind="bindContainer">
           <div class="text-body1">
-            Text body 1 - Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+            Text body 1 - Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt ut labore.
           </div>
         </div>
         <div v-bind="bindContainer">
           <div class="text-body2">
-            Text body 2 - Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+            Text body 2 - Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt ut labore.
           </div>
         </div>
         <div v-bind="bindContainer">
           <div class="text-caption">
-            Text caption - Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+            Text caption - Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt ut labore.
           </div>
         </div>
       </DynamicCard>
@@ -328,20 +400,28 @@ onMounted(() => {
     <PageSection subtitle="Notification">
       <DynamicCard v-model="showCard">
         <div v-bind="bindContainer">
-          <q-btn label="Success" color="secondary" @click="
-            NotifyUtils.positive('Lorem ipsum dolor sit consectetur.',)
-            " />
-          <q-btn label="Error" color="secondary" @click="
-            NotifyUtils.negative('Lorem ipsum dolor sit consectetur.',)
-            " />
-          <q-btn label="Warning" color="secondary" @click="
-            NotifyUtils.warning(
-              'Lorem ipsum dolor sit amet.',
-            )
-            " />
-          <q-btn label="Info" color="secondary" @click="NotifyUtils.info('Lorem ipsum consectetur.')" />
-          <q-btn label="Secondary" color="secondary"
-            @click="NotifyUtils.secondary('Lorem ipsum dolor sit amet, consectetur.')" />
+          <q-btn
+            label="Success"
+            @click="NotifyUtils.positive('Lorem ipsum dolor sit consectetur.')"
+          />
+          <q-btn
+            label="Error"
+            @click="NotifyUtils.negative('Lorem ipsum dolor sit consectetur.')"
+          />
+          <q-btn
+            label="Warning"
+            @click="NotifyUtils.warning('Lorem ipsum dolor sit amet.')"
+          />
+          <q-btn
+            label="Info"
+            @click="NotifyUtils.info('Lorem ipsum consectetur.')"
+          />
+          <q-btn
+            label="Secondary"
+            @click="
+              NotifyUtils.secondary('Lorem ipsum dolor sit amet, consectetur.')
+            "
+          />
         </div>
       </DynamicCard>
     </PageSection>
@@ -386,8 +466,8 @@ onMounted(() => {
           <q-tab-panel name="code">
             <h4 class="no-margin">Code</h4>
             <div>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-              do eiusmod tempor incididunt ut labore.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore.
             </div>
           </q-tab-panel>
           <q-tab-panel name="issues">
@@ -401,12 +481,11 @@ onMounted(() => {
           <q-tab-panel name="settings">
             <h4 class="no-margin">Issues</h4>
             <div>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-              do eiusmod tempor incididunt ut labore. Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore.
             </div>
           </q-tab-panel>
         </q-tab-panels>
@@ -419,10 +498,10 @@ onMounted(() => {
           <div style="width: 350px">
             <q-expansion-item label="Simple">
               <div class="q-pa-md">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem,
-                eius reprehenderit eos corrupti commodi magni quaerat ex numquam,
-                dolorum officiis modi facere maiores architecto suscipit iste
-                eveniet doloribus ullam aliquid.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Quidem, eius reprehenderit eos corrupti commodi magni quaerat ex
+                numquam, dolorum officiis modi facere maiores architecto
+                suscipit iste eveniet doloribus ullam aliquid.
               </div>
             </q-expansion-item>
           </div>
@@ -430,39 +509,50 @@ onMounted(() => {
         <div v-bind="bindContainer">
           <div style="width: 350px">
             <q-list bordered>
-              <q-expansion-item icon="perm_identity" label="These" caption="expansion items">
+              <q-expansion-item
+                icon="perm_identity"
+                label="These"
+                caption="expansion items"
+              >
                 <div class="q-pa-md">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem,
-                  eius reprehenderit eos corrupti commodi magni quaerat ex numquam,
-                  dolorum officiis modi facere maiores architecto suscipit iste
-                  eveniet doloribus ullam aliquid.
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Quidem, eius reprehenderit eos corrupti commodi magni quaerat
+                  ex numquam, dolorum officiis modi facere maiores architecto
+                  suscipit iste eveniet doloribus ullam aliquid.
                 </div>
               </q-expansion-item>
               <q-separator />
-              <q-expansion-item icon="signal_wifi_off" label="Are in a bordered">
+              <q-expansion-item
+                icon="signal_wifi_off"
+                label="Are in a bordered"
+              >
                 <div class="q-pa-md">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem,
-                  eius reprehenderit eos corrupti commodi magni quaerat ex numquam,
-                  dolorum officiis modi facere maiores architecto suscipit iste
-                  eveniet doloribus ullam aliquid.
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Quidem, eius reprehenderit eos corrupti commodi magni quaerat
+                  ex numquam, dolorum officiis modi facere maiores architecto
+                  suscipit iste eveniet doloribus ullam aliquid.
                 </div>
               </q-expansion-item>
               <q-separator />
-              <q-expansion-item icon="drafts" label="Fixed size" header-class="text-info">
+              <q-expansion-item
+                icon="drafts"
+                label="Fixed size"
+                header-class="text-info"
+              >
                 <div class="q-pa-md">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem,
-                  eius reprehenderit eos corrupti commodi magni quaerat ex numquam,
-                  dolorum officiis modi facere maiores architecto suscipit iste
-                  eveniet doloribus ullam aliquid.
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Quidem, eius reprehenderit eos corrupti commodi magni quaerat
+                  ex numquam, dolorum officiis modi facere maiores architecto
+                  suscipit iste eveniet doloribus ullam aliquid.
                 </div>
               </q-expansion-item>
               <q-separator />
               <q-expansion-item icon="assessment" label="List" disable>
                 <div class="q-pa-md">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem,
-                  eius reprehenderit eos corrupti commodi magni quaerat ex numquam,
-                  dolorum officiis modi facere maiores architecto suscipit iste
-                  eveniet doloribus ullam aliquid.
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Quidem, eius reprehenderit eos corrupti commodi magni quaerat
+                  ex numquam, dolorum officiis modi facere maiores architecto
+                  suscipit iste eveniet doloribus ullam aliquid.
                 </div>
               </q-expansion-item>
             </q-list>
@@ -473,7 +563,7 @@ onMounted(() => {
 
     <PageSection subtitle="Dialog">
       <DynamicCard v-model="showCard">
-        <q-btn label="Click me" color="secondary" @click="dialog = true" />
+        <q-btn label="Click me" @click="dialog = true" />
         <q-dialog v-model="dialog">
           <q-card class="flex-center column">
             <q-card-section class="row items-center">
@@ -489,7 +579,5 @@ onMounted(() => {
         </q-dialog>
       </DynamicCard>
     </PageSection>
-
   </PageLayout>
-
 </template>
