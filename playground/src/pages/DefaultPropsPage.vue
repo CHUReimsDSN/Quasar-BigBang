@@ -2,6 +2,13 @@
 import PageSection from "@/components/PageSection.vue";
 import PageLayout from "@/layout/PageLayout.vue";
 import defaultProps from "@/../../ae/generated/default-props/default-props.json";
+import CodeContainer from "@/components/CodeContainer.vue";
+
+// consts
+const usageCode = `// src/boot/big-bang.ts
+import { BigBangTheme } from "quasar-app-extension-big-bang";
+
+BigBangTheme.setPropsByComponent("btn", "color", "red");`;
 
 // functions
 function formatPropValue(value: unknown) {
@@ -14,6 +21,12 @@ function formatPropValue(value: unknown) {
 
 <template>
   <PageLayout title="Default props">
+    <PageSection subtitle="Change props">
+      <div>You can change Quasar's components default props like this :</div>
+      <br />
+      <CodeContainer :code="usageCode" lang="ts" />
+      <div>Below is all the props set by BigBang.</div>
+    </PageSection>
     <PageSection
       v-for="entry of Object.entries(defaultProps)"
       :key="entry[0]"

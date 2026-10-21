@@ -9,10 +9,9 @@ import PageLayout from "@/layout/PageLayout.vue";
 const usageCode = `// src/boot/big-bang.ts
 import { BigBangTheme } from "quasar-app-extension-big-bang";
 
-BigBangTheme.tryLoadTheme();`
-const saveAndSetCode = `bigBang?.setSaveMode("local-storage");
-BigBangTheme.setSaveMode("local-storage");
-BigBangTheme.tryLoadTheme();`
+BigBangTheme.tryLoadTheme();`;
+const saveAndSetCode = `BigBangTheme.setSaveMode("local-storage");
+BigBangTheme.tryLoadTheme();`;
 const cssPrimaryVariableCode = `// default primary palette is 'Emerald'
 --primary-50: #ecfdf5;
 --primary-100: #d1fae5;
@@ -93,7 +92,10 @@ body.body--dark {
     <PageSection subtitle="Usage">
       <div>The BigBangTheme static class lives within the application.</div>
       <div>It provides an API to set primary and surface colors and</div>
-      <div> can save configuration to the browser's local storage for autoloading preferences.</div>
+      <div>
+        can save configuration to the browser's local storage for autoloading
+        preferences.
+      </div>
       <br />
       <CodeContainer :code="usageCode" lang="ts" />
       <br />
@@ -115,7 +117,10 @@ body.body--dark {
         <div>The Big Bang API change these at runtime.</div>
         <div>
           You may want to hardcode them but then never use the
-          <LinkHighlight :to="{ name: 'qbb-theme-picker' }" label="QBBThemePicker" />.
+          <LinkHighlight
+            :to="{ name: 'qbb-theme-picker' }"
+            label="QBBThemePicker"
+          />.
         </div>
       </Banner>
     </PageSection>
