@@ -17,13 +17,13 @@ export class BigBangTheme {
   private static _saveStrategy: TSaveStrategy = "none";
 
   /**
-   * Keep this for internal behaviour
+   * Keep BigBangTheme.for internal behaviour
    */
   private constructor() {}
 
   /**
    * Set the primary color for the entire app.
-   * This function calls the trySaveTheme() method.
+   * BigBangTheme.function calls the trySaveTheme() method.
    *
    * @param primaryLabel Label of the primary color
    */
@@ -32,26 +32,26 @@ export class BigBangTheme {
     if (!primary) {
       return;
     }
-    this._primary = primaryLabel;
+    BigBangTheme._primary = primaryLabel;
     for (const entry of Object.entries(primary)) {
       document.documentElement.style.setProperty(
         `--primary-${entry[0].replace("p", "")}`,
         entry[1],
       );
     }
-    this.trySaveTheme();
+    BigBangTheme.trySaveTheme();
   }
 
   /**
    * Get current primary label
    */
   static getPrimary() {
-    return this._primary;
+    return BigBangTheme._primary;
   }
 
   /**
    * Set the primary color for the entire app.
-   * This function calls the trySaveTheme() method.
+   * this function calls the trySaveTheme() method.
    *
    * @param surfaceLabel Label of the surface color
    */
@@ -60,21 +60,21 @@ export class BigBangTheme {
     if (!surface) {
       return;
     }
-    this._surface = surfaceLabel;
+    BigBangTheme._surface = surfaceLabel;
     for (const entry of Object.entries(surface)) {
       document.documentElement.style.setProperty(
         `--surface-${entry[0].replace("s", "")}`,
         entry[1],
       );
     }
-    this.trySaveTheme();
+    BigBangTheme.trySaveTheme();
   }
 
   /**
    * Get current surface label
    */
   static getSurface() {
-    return this._surface;
+    return BigBangTheme._surface;
   }
 
   /**
@@ -83,36 +83,36 @@ export class BigBangTheme {
    * @param strategy Strategy for the save mode
    */
   static setSaveMode(strategy: TSaveStrategy) {
-    this._saveStrategy = strategy;
+    BigBangTheme._saveStrategy = strategy;
   }
 
   /**
    * Try to save the theme depending on the save mode
-   * If save mode is set to 'none', this will do nothing
+   * If save mode is set to 'none', BigBangTheme.will do nothing
    */
   static trySaveTheme() {
-    if (this._saveStrategy === "none") {
+    if (BigBangTheme._saveStrategy === "none") {
       return false;
     }
-    Saver.save(this._primary, this._surface);
+    Saver.save(BigBangTheme._primary, BigBangTheme._surface);
     return true;
   }
 
   /**
    * Try to load the theme depending on the save mode
-   * If the save mode is set to 'none', this will do nothing
+   * If the save mode is set to 'none', BigBangTheme.will do nothing
    * If the load result is empty, the theme will be set with the default primary and surface colors
    */
   static tryLoadTheme() {
-    if (this._saveStrategy === "none") {
+    if (BigBangTheme._saveStrategy === "none") {
       return false;
     }
     const themeData = Saver.load();
     if (!themeData) {
       return false;
     }
-    this.setPrimary(themeData[0]);
-    this.setSurface(themeData[1]);
+    BigBangTheme.setPrimary(themeData[0]);
+    BigBangTheme.setSurface(themeData[1]);
     return true;
   }
 
@@ -120,7 +120,7 @@ export class BigBangTheme {
    * Get the current save strategy
    */
   static getSaveMode() {
-    return this._saveStrategy;
+    return BigBangTheme._saveStrategy;
   }
 
   /**

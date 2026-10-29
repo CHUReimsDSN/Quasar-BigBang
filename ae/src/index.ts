@@ -17,13 +17,6 @@ export default defineIndexScript((api) => {
       conf.framework.config.ripple = false;
     }
   });
-  api.extendQuasarConf((conf) => {
-    conf.framework ??= {};
-    conf.framework.plugins ??= [];
-    if (!conf.framework.plugins.includes("LocalStorage")) {
-      conf.framework.plugins.push("LocalStorage");
-    }
-  });
   const registerDescrApiByLabel = (label: string) => {
     api.registerDescribeApi(label, `./generated/components/${label}.json`);
   };

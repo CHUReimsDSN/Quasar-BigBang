@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { primaries, type TPrimaryLabel } from "../core/primary";
 import { surfaces, type TSurfaceLabel } from "../core/surface";
-import { BigBangTheme } from "../core/big-bang-theme";
+import { BigBangTheme } from "../index";
 
 // refs
 const selectedPrimary = ref(BigBangTheme.getPrimary());
@@ -11,7 +11,7 @@ const selectedSurface = ref(BigBangTheme.getSurface());
 // functions
 /**
  * Set Primary color
- * 
+ *
  * @param label The primary label
  */
 function setPrimary(label: TPrimaryLabel) {
@@ -21,7 +21,7 @@ function setPrimary(label: TPrimaryLabel) {
 
 /**
  * Set Surface color
- * 
+ *
  * @param label The surface label
  */
 function setSurface(label: TSurfaceLabel) {
@@ -32,8 +32,8 @@ function setSurface(label: TSurfaceLabel) {
 // exposes
 defineExpose({
   setPrimary,
-  setSurface
-})
+  setSurface,
+});
 </script>
 
 <template>
@@ -42,9 +42,14 @@ defineExpose({
       <div class="flex column q-gutter-y-sm">
         <div class="text-body1">Primary</div>
         <div class="flex row items-center">
-          <div v-for="primary of primaries" :key="primary[0]"
-            :class="`theme-selector ${selectedPrimary === primary[0] ? 'theme-selector-active' : ''}`" name="circle"
-            :style="`background: ${primary[1].reference}`" @click="setPrimary(primary[0])">
+          <div
+            v-for="primary of primaries"
+            :key="primary[0]"
+            :class="`theme-selector ${selectedPrimary === primary[0] ? 'theme-selector-active' : ''}`"
+            name="circle"
+            :style="`background: ${primary[1].reference}`"
+            @click="setPrimary(primary[0])"
+          >
             <q-tooltip>{{ primary[0] }}</q-tooltip>
           </div>
         </div>
@@ -52,9 +57,14 @@ defineExpose({
       <div class="flex column q-gutter-y-sm q-pt-md">
         <div class="text-body1">Surface</div>
         <div class="flex row items-center">
-          <div v-for="surface of surfaces" :key="surface[0]"
-            :class="`theme-selector ${selectedSurface === surface[0] ? 'theme-selector-active' : ''}`" name="circle"
-            :style="`background: ${surface[1].reference}`" @click="setSurface(surface[0])">
+          <div
+            v-for="surface of surfaces"
+            :key="surface[0]"
+            :class="`theme-selector ${selectedSurface === surface[0] ? 'theme-selector-active' : ''}`"
+            name="circle"
+            :style="`background: ${surface[1].reference}`"
+            @click="setSurface(surface[0])"
+          >
             <q-tooltip>{{ surface[0] }}</q-tooltip>
           </div>
         </div>
