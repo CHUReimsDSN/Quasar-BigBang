@@ -14,13 +14,10 @@ export class Saver {
     );
   }
 
-  static load(): [TPrimaryLabel, TSurfaceLabel] {
-    return (
-      (localStorage.getItem(this.keyName)?.split(this.serializerSeparator) as [
-        TPrimaryLabel,
-        TSurfaceLabel,
-      ]) ?? ["Emerald", "Slate"]
-    );
+  static load(): [TPrimaryLabel, TSurfaceLabel] | undefined {
+    return localStorage
+      .getItem(this.keyName)
+      ?.split(this.serializerSeparator) as [TPrimaryLabel, TSurfaceLabel];
   }
 
   private constructor() {}

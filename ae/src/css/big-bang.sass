@@ -607,16 +607,38 @@ $notification-colors: (
   font-family: 'bigBangFont'
 
 :root
-  --ag-background-color: var(--card-background)
+  color-scheme: light
 
-:root body.body--dark 
   --ag-wrapper-border-radius: #{$generic-border-radius} !important
   --ag-border-radius: #{$generic-border-radius} !important
   --ag-font-size: #{$body-font-size} !important
   --ag-spacing: 7px !important
   --ag-header-font-weight: 600 !important
   --ag-menu-shadow: none !important
-  --ag-background-color: var(--card-background)
+  --ag-background-color: var(--card-background) !important
+  --ag-header-text-color: var(--text-color) !important
+  --ag-menu-background-color: var(--surface-100) !important
+  --ag-row-hover-color: alpha(from var(--primary-500) / 10%) !important
+  --ag-menu-text-color: var(--text-color) !important
+  --ag-text-color: var(--text-color) !important
+  --ag-icon-button-hover-color: var(--primary-500) !important
+  --ag-wrapper-border: 1px solid var(--border-color) !important
+  --ag-row-border: 1px solid alpha(from var(--field-border-color) / 80%) !important
+  --ag-header-background-color: var(--surface-100) !important
+
+body.body--dark 
+  color-scheme: dark
+
+  --ag-background-color: var(--card-background) !important
+  --ag-header-text-color: var(--text-color) !important
+  --ag-menu-background-color: var(--card-background) !important
+  --ag-row-hover-color: alpha(from var(--primary-500) / 10%) !important
+  --ag-menu-text-color: var(--text-secondary) !important
+  --ag-text-color: var(--text-color) !important
+  --ag-icon-button-hover-color: var(--primary-400) !important
+  --ag-wrapper-border: 1px solid var(--border-color) !important
+  --ag-row-border: 1px solid alpha(from var(--field-border-color) / 60%) !important
+  --ag-header-background-color: var(--surface-800) !important
 
 
 .bg-primary

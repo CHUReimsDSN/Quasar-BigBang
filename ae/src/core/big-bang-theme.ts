@@ -108,6 +108,9 @@ export class BigBangTheme {
       return false;
     }
     const themeData = Saver.load();
+    if (!themeData) {
+      return false;
+    }
     this.setPrimary(themeData[0]);
     this.setSurface(themeData[1]);
     return true;

@@ -347,6 +347,12 @@ export function setupBigBangProps() {
   setPropsByComponent("field", "outlined", true);
   setPropsByComponent("field", "hideBottomSpace", true);
 
+  setPropsByComponent(
+    "editor",
+    "contentStyle",
+    "background-color: var(--field-background)",
+  );
+
   setPropsByComponent("input", "dense", true);
   setPropsByComponent("input", "outlined", true);
   setPropsByComponent("input", "hideBottomSpace", true);
