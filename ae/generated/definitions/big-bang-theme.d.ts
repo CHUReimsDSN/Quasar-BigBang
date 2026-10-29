@@ -1,6 +1,7 @@
 import { type TPrimaryLabel } from "../core/primary";
 import { type TSurfaceLabel } from "../core/surface";
 import { type TSaveStrategy } from "../core/saver";
+import { type TQuasarComponent } from "./default-props";
 /**
  * Injected class for managing theme
  * Shall be used in components by using the 'inject' method from vue
@@ -56,5 +57,12 @@ export declare class BigBangTheme {
      * Get the current save strategy
      */
     static getSaveMode(): TSaveStrategy;
-    static setupDefaultProps(): void;
+    /**
+     * Setup the BigBang props for the Quasar components
+     */
+    static setupBigBangProps(): void;
+    /**
+     * Set props to Quasar's components
+     */
+    static setPropsByComponent(component: TQuasarComponent, propsName: string, value: unknown): void;
 }
