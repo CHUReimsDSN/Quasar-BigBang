@@ -1,6 +1,10 @@
 {
   "type": "component",
-  "props": {},
+  "props": {
+    "bigBangTheme": {
+      "type": "Any"
+    }
+  },
   "events": {},
   "slots": {},
   "methods": {

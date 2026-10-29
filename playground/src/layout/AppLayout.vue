@@ -8,6 +8,11 @@ import { useRoute } from "vue-router";
 // consts
 const route = useRoute();
 
+// functions
+function getInstance() {
+  return BigBangTheme;
+}
+
 // refs
 const drawer = ref(true);
 </script>
@@ -33,7 +38,7 @@ const drawer = ref(true);
             />
             <q-icon class="cursor-pointer" name="palette">
               <q-popup-proxy>
-                <qbb-theme-picker :bigBangTheme="BigBangTheme" />
+                <qbb-theme-picker :getInstance="getInstance" />
               </q-popup-proxy>
             </q-icon>
             <q-btn

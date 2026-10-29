@@ -4,7 +4,10 @@ import PageSection from "@/components/PageSection.vue";
 import PageLayout from "@/layout/PageLayout.vue";
 import jsonApi from "@/../../ae/generated/components/QBBThemePicker.json";
 import ComponentJsonApi from "@/components/json-api/ComponentJsonApi.vue";
-import type { TComponentApi } from "quasar-app-extension-big-bang";
+import {
+  BigBangTheme,
+  type TComponentApi,
+} from "quasar-app-extension-big-bang";
 
 // consts
 const usageCode = `<qbb-theme-picker />`;
@@ -21,7 +24,7 @@ const usageCode = `<qbb-theme-picker />`;
     </PageSection>
 
     <PageSection subtitle="Preview">
-      <qbb-theme-picker />
+      <qbb-theme-picker :getInstance="() => BigBangTheme" />
     </PageSection>
   </PageLayout>
 </template>
