@@ -11,12 +11,12 @@ export declare class BigBangTheme {
     private static _surface;
     private static _saveStrategy;
     /**
-     * Keep this for internal behaviour
+     * Keep BigBangTheme.for internal behaviour
      */
     private constructor();
     /**
      * Set the primary color for the entire app.
-     * This function calls the trySaveTheme() method.
+     * BigBangTheme.function calls the trySaveTheme() method.
      *
      * @param primaryLabel Label of the primary color
      */
@@ -27,7 +27,7 @@ export declare class BigBangTheme {
     static getPrimary(): TPrimaryLabel;
     /**
      * Set the primary color for the entire app.
-     * This function calls the trySaveTheme() method.
+     * this function calls the trySaveTheme() method.
      *
      * @param surfaceLabel Label of the surface color
      */
@@ -44,12 +44,12 @@ export declare class BigBangTheme {
     static setSaveMode(strategy: TSaveStrategy): void;
     /**
      * Try to save the theme depending on the save mode
-     * If save mode is set to 'none', this will do nothing
+     * If save mode is set to 'none', BigBangTheme.will do nothing
      */
     static trySaveTheme(): boolean;
     /**
      * Try to load the theme depending on the save mode
-     * If the save mode is set to 'none', this will do nothing
+     * If the save mode is set to 'none', BigBangTheme.will do nothing
      * If the load result is empty, the theme will be set with the default primary and surface colors
      */
     static tryLoadTheme(): boolean;

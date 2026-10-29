@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import NavigationDrawer from "@/components/NavigationDrawer.vue";
 import { Dark } from "quasar";
+import { BigBangTheme } from "quasar-app-extension-big-bang";
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 
@@ -32,7 +33,7 @@ const drawer = ref(true);
             />
             <q-icon class="cursor-pointer" name="palette">
               <q-popup-proxy>
-                <qbb-theme-picker />
+                <qbb-theme-picker :bigBangTheme="BigBangTheme" />
               </q-popup-proxy>
             </q-icon>
             <q-btn
