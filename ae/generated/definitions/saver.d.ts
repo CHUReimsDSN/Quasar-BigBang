@@ -5,6 +5,6 @@ export declare class Saver {
     private static keyName;
     private static serializerSeparator;
     static save(primaryLabel: TPrimaryLabel, surfaceLabel: TSurfaceLabel): void;
-    static load(): [TPrimaryLabel, TSurfaceLabel];
+    static load(): [TPrimaryLabel, TSurfaceLabel] | undefined;
     private constructor();
 }

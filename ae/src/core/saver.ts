@@ -1,3 +1,4 @@
+import { LocalStorage } from "quasar";
 import type { TPrimaryLabel } from "./primary";
 import type { TSurfaceLabel } from "./surface";
 
@@ -8,15 +9,15 @@ export class Saver {
   private static serializerSeparator = "|";
 
   static save(primaryLabel: TPrimaryLabel, surfaceLabel: TSurfaceLabel) {
-    localStorage.setItem(
+    LocalStorage.setItem(
       this.keyName,
       `${primaryLabel}${this.serializerSeparator}${surfaceLabel}`,
     );
   }
 
   static load(): [TPrimaryLabel, TSurfaceLabel] | undefined {
-    return localStorage
-      .getItem(this.keyName)
+    return LocalStorage.getItem(this.keyName)
+      ?.toString()
       ?.split(this.serializerSeparator) as [TPrimaryLabel, TSurfaceLabel];
   }
 
