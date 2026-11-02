@@ -1,8 +1,8 @@
 {
   "type": "component",
   "props": {
-    "bigBangTheme": {
-      "type": "Any"
+    "getInstance": {
+      "type": "Function"
     }
   },
   "events": {},

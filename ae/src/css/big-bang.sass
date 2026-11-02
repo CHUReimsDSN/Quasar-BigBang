@@ -45,7 +45,6 @@ body
 .q-dialog 
   &__backdrop
     background: rgba(from var(--card-background))
-    backdrop-filter: blur(2px)
 
 .q-item 
   border-radius: $generic-border-radius
@@ -333,6 +332,10 @@ body
   &__focus-target,
   &__dropdown-icon
     transition: transform 0.2s
+
+.q-editor
+  &__toolbar
+    background-color: var(--field-background);
 
 .q-toggle 
   &__thumb
@@ -625,6 +628,16 @@ $notification-colors: (
   --ag-wrapper-border: 1px solid var(--border-color) !important
   --ag-row-border: 1px solid alpha(from var(--field-border-color) / 80%) !important
   --ag-header-background-color: var(--surface-100) !important
+  --ag-border-color: var(--card-border-color) !important
+  --ag-checkbox-checked-background-color: var(--primary-color) !important
+  --ag-checkbox-checked-border-color: var(--primary-color) !important
+  --ag-checkbox-indeterminate-background-color: var(--inactive-color) !important
+  --ag-checkbox-indeterminate-border-color: var(--inactive-color) !important
+  --ag-checkbox-unchecked-border-color: var(--inactive-color) !important
+  --ag-drag-handle-color: var(--inactive-color) !important
+  --ag-button-text-color: var(--primary-color) !important
+  --ag-button-border: 1px solid var(--primary-color) !important
+  --ag-focus-shadow: 0px 0px 2px 1.6px color-mix(in srgb, transparent, var(--primary-color) 40%) !important
 
 body.body--dark 
   color-scheme: dark
@@ -639,7 +652,16 @@ body.body--dark
   --ag-wrapper-border: 1px solid var(--border-color) !important
   --ag-row-border: 1px solid alpha(from var(--field-border-color) / 60%) !important
   --ag-header-background-color: var(--surface-800) !important
-
+  --ag-border-color: var(--card-border-color) !important
+  --ag-checkbox-checked-background-color: var(--primary-color) !important
+  --ag-checkbox-checked-border-color: var(--primary-color) !important
+  --ag-checkbox-indeterminate-background-color: var(--inactive-color) !important
+  --ag-checkbox-indeterminate-border-color: var(--inactive-color) !important
+  --ag-checkbox-unchecked-border-color: var(--inactive-color) !important
+  --ag-drag-handle-color: var(--inactive-color) !important
+  --ag-button-text-color: var(--primary-color) !important
+  --ag-button-border: 1px solid var(--primary-color) !important
+  --ag-focus-shadow: 0px 0px 2px 1.6px color-mix(in srgb, transparent, var(--primary-color) 40%) !important
 
 .bg-primary
   background: var(--primary-color) !important

@@ -336,8 +336,10 @@ export function setupBigBangProps() {
   setPropsByComponent("icon", "size", "20px");
 
   setPropsByComponent("tabs", "noCaps", true);
+  setPropsByComponent("tabs", "dense", true);
 
   setPropsByComponent("tab", "noCaps", true);
+  setPropsByComponent("tab", "dense", true);
 
   setPropsByComponent("date", "minimal", true);
 
@@ -386,6 +388,7 @@ export function setupBigBangProps() {
   );
   setPropsByComponent("dialog", "transitionShow", transitionShow);
   setPropsByComponent("dialog", "transitionHide", transitionHide);
+  setPropsByComponent("dialog", "backdrop-filter", "blur(4px) brightness(60%)");
 
   setPropsByComponent("tree", "dense", true);
   setPropsByComponent("tree", "duration", defaultTransitionDuration);
