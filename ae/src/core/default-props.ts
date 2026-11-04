@@ -275,9 +275,9 @@ export function setPropsByComponent(
     number: Number,
     string: String,
     boolean: Boolean,
-    bigint: undefined,
+    bigint: Number,
     function: undefined,
-    symbol: undefined,
+    symbol: Symbol,
     object: undefined,
     undefined: undefined,
   }[typeof value];
@@ -288,6 +288,12 @@ export function setPropsByComponent(
     props.type = type;
   }
   quasarComponent.props[propsName] = props;
+}
+
+export function getPropsByComponent(
+  component: TQuasarComponent,
+): Record<string, unknown> | undefined {
+  return componentByName[component].props;
 }
 
 export function setupBigBangProps() {

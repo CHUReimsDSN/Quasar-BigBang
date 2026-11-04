@@ -4,6 +4,7 @@ import { Saver, type TSaveStrategy } from "../core/saver";
 import {
   setPropsByComponent,
   setupBigBangProps,
+  getPropsByComponent,
   type TQuasarComponent,
 } from "./default-props";
 
@@ -139,5 +140,12 @@ export class BigBangTheme {
     value: unknown,
   ) {
     setPropsByComponent(component, propsName, value);
+  }
+
+  /*
+   * Get props by Quasar component
+   */
+  static getPropsByComponent(component: TQuasarComponent) {
+    return getPropsByComponent(component);
   }
 }
